@@ -1,0 +1,18 @@
+<div class="media">    
+    <div class="media-body">
+      <h4 class="media-heading">Gestión de Clientes</h4>
+      <p>Operaciones CRUD/L del modelo Cliente</p>      
+    </div>   
+  </div>
+<hr/>
+<div class="row">
+  <div class="col-md">
+    <app-customer-form [customer]="mainCustomer" [title]="mainTitle" (listToReload)="reload($event)"></app-customer-form>    
+  </div>
+    <hr>
+    <div class="col-md">
+    <app-customer-list [reloadList]="mainReload"
+      (customerToEdit)="update($event)"
+      (reloadComplete)="reloadDone($event)"></app-customer-list>
+</div>
+</div>

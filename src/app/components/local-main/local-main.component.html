@@ -1,0 +1,14 @@
+<div class="media">    
+    <div class="media-body">
+      <h4 class="media-heading">Gestión de locales</h4>
+      <p>Operaciones CRUD/L del modelo locales</p>      
+    </div>   
+  </div>
+<hr/>
+<div class="row">
+    <app-local-form [local]="mainLocal" [title]="mainTitle" (listToReload)="reload($event)"></app-local-form>    
+    <hr>
+    <app-local-list [reloadList]="mainReload"
+      (localToEdit)="update($event)"
+      (reloadComplete)="reloadDone($event)"></app-local-list>
+</div>

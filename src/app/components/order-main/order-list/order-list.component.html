@@ -1,0 +1,26 @@
+<h5>Listado de ordenes</h5>
+<br>
+<table class="table table-hovered">
+    <thead>
+        <tr>
+            <td>Sub total</td>
+            <td>Tipo de iva</td>
+            <td>Monto</td>
+            <td>Estado</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of orders">            
+            <td>{{item.subtotal}}</td>
+            <td>{{item.typeiva}}</td>
+            <td>{{item.aumont}}</td>
+            <td>{{item.state}}</td>
+            <td class="btn-group">
+                <button class="btn btn-sm btn-info" [routerLink]="['/order', item.idorder]"><fa-icon [icon]='faEye'></fa-icon></button>
+                <button class="btn btn-sm btn-warning" (click)="update(item)" ><fa-icon [icon]='faPencilAlt'></fa-icon></button>
+                <button class="btn btn-sm btn-danger" (click)="delete(item)" ><fa-icon [icon]='faTrash'></fa-icon></button>
+            </td>
+        </tr>
+    </tbody>
+</table>

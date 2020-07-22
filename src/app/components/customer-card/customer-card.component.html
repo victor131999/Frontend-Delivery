@@ -1,0 +1,61 @@
+<br>
+<h5>{{ customer.name }}</h5>
+<hr>
+<div class="container container-fluid">
+    <div class="d-flex justify-content-around">
+        <div class="media">
+            <div class="media-left">
+                <fa-icon class="mr-3 fa-2x" [icon]='faUser'></fa-icon>
+            </div>
+            <div class="media-body">
+                <small class="media-heading">Nombres</small>
+                <p class="h6"><strong>{{customer.name | titlecase}}</strong></p>
+            </div>
+        </div>        
+        <div class="media">
+            <div class="media-left">
+                <fa-icon class="mr-3 fa-2x" [icon]='faMapMarkedAlt'></fa-icon>
+            </div>
+            <div class="media-body">
+                <small class="media-heading">Direccion</small>
+                <p class="h6"><strong>{{customer.direction}}</strong></p>
+            </div>
+        </div>
+    </div>
+<hr>
+    <div class="d-flex justify-content-around">
+        <div class="media">
+            <div class="media-left">
+                <fa-icon class="mr-3 fa-2x" [icon]='faAddressCard'></fa-icon>
+            </div>
+            <div class="media-body">
+                <small class="media-heading">Cedula</small>
+                <p class="h6"><strong>{{customer.identy}}</strong></p>
+            </div>
+        </div>        
+        <div class="media">
+            <div class="media-left">
+                <fa-icon class="mr-3 fa-2x" [icon]='faToggleOn'></fa-icon>
+            </div>
+            <div class="media-body">
+                <small class="media-heading">Actividad</small>
+                <p class="h6"><strong>{{customer.active}}</strong></p>
+            </div>
+        </div>        
+    </div>    
+  <hr>
+  
+  <div class="d-flex justify-content-around">
+    <div class="media">
+        <div class="media-left">
+            <fa-icon class="mr-3 fa-2x" [icon]='faPhone'></fa-icon>
+        </div>
+        <div class="media-body">
+            <small class="media-heading">Telefono</small>
+            <p class="h6"><strong>{{customer.phone}}</strong></p>
+        </div>
+    </div>              
+</div>    
+<hr>
+<br>
+</div>
