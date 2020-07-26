@@ -5,6 +5,7 @@ import { Local } from 'src/app/shared/models/local';
 import { LocalService } from 'src/app/core/services/local.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-local-list',
   templateUrl: './local-list.component.html',
@@ -21,17 +22,37 @@ export class LocalListComponent implements OnInit {
   faTrash = faTrash;  
   
   locals : Local[];
-  limit='5';
-  last='8';
+  limit:number;
+  last:number;
   constructor(private LocalService: LocalService,private Group: FormBuilder) { }
 
 
   ngOnInit(): void {
-    //this.list(); 
-      this.queryForm=this.Group.group({
-        last: ['',[Validators.required]],
-        limit: ['', [Validators.required]]
+   // this.list(); 
+   this.queryForm=this.Group.group({
+    limit: ['',[Validators.required]],
     });
+    this.limit=5;
+    this.last=0;
+    this.listPage(this.limit,this.last);
+  }
+
+  next(){
+    if(this.limit>this.locals.length){
+      return "Fin";
+    }else{
+      this.last=this.limit+this.last;
+      console.log(this.last);
+    this.listPage(this.limit,this.last);
+    }
+  }
+
+  ant(){
+    if(this.limit<0){
+      return "Fin";
+    }
+    this.last=this.last-this.limit;
+    console.log(this.last);
     this.listPage(this.limit,this.last);
   }
 
@@ -53,10 +74,9 @@ export class LocalListComponent implements OnInit {
     );
   }
 
-  listPage(limit:string,last:string) : void {
+  listPage(limit:number,last:number) : void {
     this.LocalService.listPage(limit,last).subscribe(
       result => {      
-          
         this.locals = result;                
         this.reloadComplete.emit(true);
       }

@@ -1,8 +1,9 @@
 <h5>Listado de locales</h5>
 <br>
-<form [formGroup]="queryForm">
-    <input [(ngModel)]="limit"/>
-    <input [(ngModel)]="last"/>
+<form [formGroup]="queryForm" >
+    <button (click)="ant()" >Anterior</button>
+    <input  formControlName="limit" [(ngModel)]="limit" type="number" placeholder="limit" min="1" max="10"/>
+    <button (click)="next()" >Siguiente</button>
 </form>
 <table class="table table-hovered">
     <thead>
@@ -10,11 +11,11 @@
             <td>N°</td>
             <td>Nombre</td>
             <td>Dirección</td>
-            <td></td>
+            <td>Opciones</td>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of locals ;let i = index;">  
+        <tr *ngFor="let item of locals;let i = index ">  
             <td>{{i | masmas}}</td>          
             <td>{{item.name}}</td>
             <td>{{item.direction}}</td>

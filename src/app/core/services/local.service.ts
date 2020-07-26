@@ -49,8 +49,10 @@ export class LocalService {
       );
   }
 
-  listPage(limit:string,last:string): Observable<Local[]> {
-    return this.http.get<Local[]>(this.url.concat('/').concat(limit).concat('/').concat(last), this.httpOptions)
+  listPage(limit:number,last:number): Observable<Local[]> {
+   let limite=String(limit);
+   let laste=String(last);
+    return this.http.get<Local[]>(this.url.concat('/').concat(limite).concat('/').concat(laste), this.httpOptions)
       .pipe(
         retry(1)
       );
