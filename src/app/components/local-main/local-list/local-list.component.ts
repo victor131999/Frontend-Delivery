@@ -3,6 +3,7 @@ import { faEye, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert2'
 import { Local } from 'src/app/shared/models/local';
 import { LocalService } from 'src/app/core/services/local.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-local-list',
@@ -10,7 +11,7 @@ import { LocalService } from 'src/app/core/services/local.service';
   styleUrls: ['./local-list.component.css']
 })
 export class LocalListComponent implements OnInit {
-
+  queryForm:FormGroup;
   @Output() localToEdit = new EventEmitter<Local>();
   @Input() reloadList: Boolean; 
   @Output() reloadComplete = new EventEmitter<Boolean>();
@@ -20,14 +21,18 @@ export class LocalListComponent implements OnInit {
   faTrash = faTrash;  
   
   locals : Local[];
+  limit='5';
+  last='8';
+  constructor(private LocalService: LocalService,private Group: FormBuilder) { }
 
-  constructor(private LocalService: LocalService) { }
-
- 
-  Initpage:number=1;
 
   ngOnInit(): void {
-    this.list(); 
+    //this.list(); 
+      this.queryForm=this.Group.group({
+        last: ['',[Validators.required]],
+        limit: ['', [Validators.required]]
+    });
+    this.listPage(this.limit,this.last);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -40,7 +45,18 @@ export class LocalListComponent implements OnInit {
 
   list() : void {
     this.LocalService.list().subscribe(
-      result => {        
+      result => {      
+          
+        this.locals = result;                
+        this.reloadComplete.emit(true);
+      }
+    );
+  }
+
+  listPage(limit:string,last:string) : void {
+    this.LocalService.listPage(limit,last).subscribe(
+      result => {      
+          
         this.locals = result;                
         this.reloadComplete.emit(true);
       }

@@ -24,7 +24,6 @@ export class MotorizedListComponent implements OnInit {
   constructor(private MotorizedService: MotorizedService) { }
 
   
-  Initpage:number=1;
 
   ngOnInit(): void {
     this.list(); 

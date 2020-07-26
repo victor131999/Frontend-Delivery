@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr tr *ngFor="let item of customers | paginate:{itemsPerPage:5,currentPage:Initpage};let i = index;">            
+        <tr tr *ngFor="let item of customers ;let i = index;">            
             <td>{{i | masmas}}</td>
             <td>{{item.name | titlecase}}</td>
             <td>{{item.phone}}</td>
@@ -22,4 +22,3 @@
         </tr>
     </tbody>
 </table>
-<pagination-controls (pageChange)="Initpage= $event"></pagination-controls>

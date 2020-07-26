@@ -48,5 +48,13 @@ export class LocalService {
         retry(1)
       );
   }
+
+  listPage(limit:string,last:string): Observable<Local[]> {
+    return this.http.get<Local[]>(this.url.concat('/').concat(limit).concat('/').concat(last), this.httpOptions)
+      .pipe(
+        retry(1)
+      );
+  }
+
 }
 

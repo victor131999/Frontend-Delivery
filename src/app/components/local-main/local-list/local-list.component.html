@@ -1,5 +1,9 @@
 <h5>Listado de locales</h5>
 <br>
+<form [formGroup]="queryForm">
+    <input [(ngModel)]="limit"/>
+    <input [(ngModel)]="last"/>
+</form>
 <table class="table table-hovered">
     <thead>
         <tr>
@@ -10,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of locals | paginate:{itemsPerPage:5,currentPage:Initpage};let i = index;">  
+        <tr *ngFor="let item of locals ;let i = index;">  
             <td>{{i | masmas}}</td>          
             <td>{{item.name}}</td>
             <td>{{item.direction}}</td>
@@ -21,5 +25,5 @@
             </td>
         </tr>
     </tbody>
+
 </table>
-<pagination-controls (pageChange)="Initpage = $event"></pagination-controls>

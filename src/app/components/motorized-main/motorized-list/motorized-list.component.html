@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of motorizeds | paginate:{itemsPerPage:5,currentPage:Initpage};let i = index;">    
+        <tr *ngFor="let item of motorizeds;let i = index;">    
             <td>{{i | masmas}}</td>         
             <td>{{item.name}}</td>
             <td>{{item.vehicle}}</td>
@@ -22,4 +22,4 @@
         </tr>
     </tbody>
 </table>
-<pagination-controls (pageChange)="Initpage = $event"></pagination-controls>
+

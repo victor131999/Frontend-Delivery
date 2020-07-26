@@ -23,7 +23,7 @@ export class CustomerListComponent implements OnInit {
 
   constructor(private customerService: CustomerService) { }
 
-  Initpage:number=1;
+
 
   ngOnInit(): void {
     this.list(); 
