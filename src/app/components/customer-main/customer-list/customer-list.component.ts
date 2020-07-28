@@ -10,7 +10,7 @@ import { CustomerService } from 'src/app/core/services/customer.service';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-
+  @Input() flagToReload : Boolean;
   @Output() customerToEdit = new EventEmitter<Customer>();
   @Input() reloadList: Boolean; 
   @Output() reloadComplete = new EventEmitter<Boolean>();
@@ -23,15 +23,14 @@ export class CustomerListComponent implements OnInit {
 
   constructor(private customerService: CustomerService) { }
 
-
-
   ngOnInit(): void {
     this.list(); 
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.reloadList.currentValue){
-      if(this.reloadList){
+    if(changes.flagToReload.currentValue){
+      console.log("Flag changed to: " + this.flagToReload );
+      if(this.flagToReload){
         this.list();
       }
     }
@@ -46,29 +45,65 @@ export class CustomerListComponent implements OnInit {
     );
   }
 
-  update(customer: Customer) {    
+  update(customer: Customer) : void  {    
+    console.log("Customer to edit:" + customer);
     this.customerToEdit.emit(customer);
   }
 
-retrieve(id: string) : void {
-        this.customerService.retrieve(id).subscribe(
-          customer =>{
-            swal.fire({
-          title: `<h4>${customer.name}</h4>`,
+
+
+  /*retrieve(id :string): void {
+    this.CustomerService.retrieve(id).subscribe(
+      customer => {
+        swal.fire({
+          title: `<h4>${customer.name}</h4>`,          
           html: `<dl class="dl-horizontal">
-            <label>Nombre:</label><span>${customer.name}</span><br>
-            <label>Direccion:</label><span>${customer.direction}</span><br>
-            <label>Cedula:</label><span>${customer.identy}</span><br>
-            <label>Actividad:</label><span>${customer.active}</span><br>
-            <label>Telefono:</label><span>${customer.phone}</span><br>
-          </dl>`,
+                    <dt>Nombre:</dt><dd>${customer.name}</dd>
+                    <dt>Direccion:</dt><dd>${customer.direction}</dd>
+                    <dt>Cedula:</dt><dd>${customer.identy}</dd>
+                    <dt>Actividad:</dt><dd>${customer.active}</dd>
+                    <dt>Telefono:</dt><dd>${customer.phone}</dd>                   
+                 </dl>`,                   
           focusConfirm: false,
           confirmButtonText: 'Aceptar'
         })
+        
       }
     );
+  }*/
+ retrievee(id: string) : void {
+    this.customerService.retrievee(id).subscribe(
+      customer =>{
+        swal.fire({
+      title: `<h4>${customer.name}</h4>`,
+      html: `<dl class="dl-horizontal">
+        <label>Nombre:</label><span>${customer.name}</span><br>
+        <label>Direccion:</label><span>${customer.direction}</span><br>
+        <label>Direccion:</label><span>${customer.identy}</span><br>
+        <label>Direccion:</label><span>${customer.active}</span><br>
+        <label>Direccion:</label><span>${customer.phone}</span><br>
+      </dl>`,
+      focusConfirm: false,
+      confirmButtonText: 'Aceptar'
+    })
   }
-  
+);
+}
+
+retrieve(customer: Customer) : void {
+  swal.fire({
+    title: `<h4>${customer.name}</h4>`,
+    icon: 'info',
+    confirmButtonText: 'Aceptar',
+    html: `<hr><fieldset>
+    <label>Nombre:</label><span>${customer.name}</span><br>
+    <label>Direccion:</label><span>${customer.direction}</span><br>
+    <label>Cedula:</label><span>${customer.identy}</span><br>
+    <label>Actividad:</label><span>${customer.active}</span><br>
+    <label>Telefono:</label><span>${customer.phone}</span><br>
+</fieldset>`
+  });
+}
 
   delete(customer: Customer) : void {
     swal.fire({
@@ -80,10 +115,11 @@ retrieve(id: string) : void {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar'
-    }).then((option) => {
-      if (option.value) {
+    }).then((result) => {
+      if (result.value) {
         this.customerService.delete(customer.idcustomer).subscribe(
           result => {
+            swal.fire(result);
             this.list();
           }
         );       

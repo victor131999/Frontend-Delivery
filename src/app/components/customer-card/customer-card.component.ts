@@ -19,29 +19,23 @@ export class CustomerCardComponent implements OnInit {
   faAt = faAt;
   faRoad = faRoad;
 
-  customer : Customer=new Customer(); 
+  customer : Customer; 
   
   constructor(private customerService: CustomerService, private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( params =>{
       if(params['id']){
-        this.customerService.retrieve(params['id'])
+        this.customerService.retrievee(params['id'])
             .subscribe(result => 
               {
               this.customer = result;
               this.customer.idcustomer=params['id'];
-              this.getBills();
+              console.log(this.customer.idcustomer);
               }
               );
       }
     });    
-  }
-
-  getBills() : void {
-    this.customerService.getBills(this.customer.idcustomer).subscribe(
-      result => console.log(result)
-    );
   }
 
 }

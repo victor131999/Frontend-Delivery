@@ -20,13 +20,13 @@ export class OrderService {
 
   constructor(private http:HttpClient) { }
 
-  save(local : Order): Observable<any>  {  
-    let orderBody = JSON.stringify(local);
-    if(local.idorder === undefined){
+  save(order : Order): Observable<any>  {  
+    let orderBody = JSON.stringify(order);
+    if(order.idorder === undefined){
       return this.http.post<Order>(this.url, orderBody, this.httpOptions);
     }
     else{
-      return this.http.put<Order>(this.url.concat('/').concat(local.idorder), orderBody, this.httpOptions);
+      return this.http.put<Order>(this.url.concat('/').concat(order.idorder), orderBody, this.httpOptions);
     }
   }
   

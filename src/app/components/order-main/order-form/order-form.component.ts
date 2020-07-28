@@ -32,7 +32,6 @@ export class OrderFormComponent implements OnInit {
 
   ngOnInit(): void {    
     this.formOrder = this.formBuilder.group({
-      subtotal : ['',[Validators.required]],
       typeiva : ['', [Validators.required]],
       aumont : ['',[Validators.required]],
       state : ['', [Validators.required]]

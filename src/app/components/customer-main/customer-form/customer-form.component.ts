@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faToggleOn,faAddressCard, faUser, faCalendar, faMapMarkedAlt, faPhone, faAt, faRoad, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms'
-
+import swal from 'sweetalert2'
 import { Customer } from 'src/app/shared/models/customer';
 import { CustomerService } from 'src/app/core/services/customer.service';
 
@@ -24,8 +24,8 @@ export class CustomerFormComponent implements OnInit {
 
   @Input() customer: Customer;    
   @Input() title : String;
-  @Output() listToReload = new EventEmitter<Boolean>();
-
+  //@Output() listToReload = new EventEmitter<Boolean>();
+  @Output() flagToReload = new EventEmitter<Boolean>();
   formCustomer: FormGroup;
   submitted = false;
        
@@ -40,15 +40,24 @@ export class CustomerFormComponent implements OnInit {
       phone : ['',[Validators.required]]
     });                   
   }
-  
-  save(): void {       
+
+  get f(){
+    return this.formCustomer.controls;
+  }
+
+  onReset(): void  {
+    this.formCustomer.reset();
+    this.submitted = false;
+  }
+
+  /*save(): void {       
     this.submitted = true;
     
     if (this.formCustomer.invalid) {
         return;
     }
     
-    this.customerService.save(this.customer).subscribe(
+    this.CustomerService.save(this.customer).subscribe(
         (result) => {        
           this.submitted = false;
           if(result !== undefined)
@@ -60,12 +69,29 @@ export class CustomerFormComponent implements OnInit {
           }
         }        
       );    
+  }*/
+  onSubmit() : void {
+    this.submitted = true;
+
+    if(this.formCustomer.invalid){
+      console.log('Form invalid');
+      return;        
+    }
+
+    this.customerService.save(this.customer).subscribe(
+      result => {
+        this.submitted = false;
+
+        if(result.icon === "success"){
+          swal.fire(result);                  
+          this.flagToReload.emit(true);          
+          return;
+        }
+        
+        swal.fire(result);
+    });
   }
 
-  onReset() {
-    this.customer = new Customer();
-    this.submitted = false;
-    this.formCustomer.reset();
-  }
+
 
 }

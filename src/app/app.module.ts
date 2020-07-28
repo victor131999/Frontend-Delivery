@@ -22,14 +22,12 @@ import { LocalMainComponent } from './components/local-main/local-main.component
 import { LocalListComponent } from './components/local-main/local-list/local-list.component';
 import { LocalFormComponent } from './components/local-main/local-form/local-form.component';
 import { LocalService } from './core/services/local.service';
-import { LocalCardComponent } from './components/local-card/local-card.component';
 
 //vehiculos
 import { MotorizedMainComponent } from './components/motorized-main/motorized-main.component';
 import { MotorizedListComponent } from './components/motorized-main/motorized-list/motorized-list.component';
 import { MotorizedFormComponent } from './components/motorized-main/motorized-form/motorized-form.component';
 import { MotorizedService } from './core/services/motorized.service';
-import { MotorizedCardComponent } from './components/motorized-card/motorized-card.component';
 
 //Ordenes
 import { OrderMainComponent } from './components/order-main/order-main.component';
@@ -57,12 +55,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LocalMainComponent,
     LocalListComponent,
     LocalFormComponent,
-    LocalCardComponent,
+
 
     MotorizedMainComponent,
     MotorizedListComponent,
     MotorizedFormComponent,
-    MotorizedCardComponent,
+ 
 
     OrderMainComponent,
     OrderListComponent,

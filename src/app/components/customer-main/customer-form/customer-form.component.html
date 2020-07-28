@@ -1,53 +1,53 @@
 <h5>{{title}}</h5>
 <br>
-<form [formGroup]="formCustomer" (ngSubmit)="save()" class="user">
+<form [formGroup]="formCustomer" (ngSubmit)="onSubmit()" class="user">
     <div class="card-body">
         <div class="input-group md-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><fa-icon [icon]='faUser'></fa-icon></span>
             </div>
-            <input formControlName="name" [(ngModel)]="customer.name" [ngClass]="{'is-invalid': submitted && formCustomer.controls.name.errors }"  type="text" class="form-control form-control-user" placeholder="Nombre" />
-            <div *ngIf="submitted && formCustomer.controls.name.errors" class="invalid-feedback">
-                <div *ngIf="formCustomer.controls.name.errors.required">El nombre es requerido</div>
+            <input formControlName="name" [(ngModel)]="customer.name" [ngClass]="{'is-invalid': submitted && f.name.errors }"  type="text" class="form-control form-control-user" placeholder="Nombre" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">El nombre es requerido</div>
             </div>
         </div>
         <div class="input-group md-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><fa-icon [icon]='faMapMarkedAlt'></fa-icon></span>
             </div>
-            <input formControlName="direction" [(ngModel)]="customer.direction" [ngClass]="{'is-invalid': submitted && formCustomer.controls.direction.errors }" type="text" class="form-control form-control-user" placeholder="Dirección" />
-            <div *ngIf="submitted && formCustomer.controls.direction.errors" class="invalid-feedback">
-                <div *ngIf="formCustomer.controls.direction.errors.required">La dirección es requerido</div>
+            <input formControlName="direction" [(ngModel)]="customer.direction" [ngClass]="{'is-invalid': submitted && f.direction.errors }" type="text" class="form-control form-control-user" placeholder="Dirección" />
+            <div *ngIf="submitted && f.direction.errors" class="invalid-feedback">
+                <div *ngIf="f.direction.errors.required">La dirección es requerido</div>
             </div>
         </div>
         <div class="input-group md-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><fa-icon [icon]='faAddressCard'></fa-icon></span>
             </div>
-            <input formControlName="identy" [(ngModel)]="customer.identy" [ngClass]="{'is-invalid': submitted && formCustomer.controls.identy.errors }" type="text" class="form-control form-control-user" placeholder="Cédula"  />
-            <div *ngIf="submitted && formCustomer.controls.identy.errors" class="invalid-feedback">
-                <div *ngIf="formCustomer.controls.identy.errors.required">La identificación es requerida</div>
+            <input formControlName="identy" [(ngModel)]="customer.identy" [ngClass]="{'is-invalid': submitted && f.identy.errors }" type="text" class="form-control form-control-user" placeholder="Cédula"  />
+            <div *ngIf="submitted && f.identy.errors" class="invalid-feedback">
+                <div *ngIf="f.identy.errors.required">La identificación es requerida</div>
             </div>
         </div>
         <div class="input-group md-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><fa-icon [icon]='faToggleOn'></fa-icon></span>
             </div>            
-            <select formControlName="active" [(ngModel)]="customer.active" [ngClass]="{'is-invalid': submitted && formCustomer.controls.active.errors }" class="form-control form-control-user">
+            <select formControlName="active" [(ngModel)]="customer.active" [ngClass]="{'is-invalid': submitted && f.active.errors }" class="form-control form-control-user">
                 <option selected>Activo</option>
                 <option>No activo</option>
             </select>
-            <div *ngIf="submitted && formCustomer.controls.active.errors" class="invalid-feedback">
-                <div *ngIf="formCustomer.controls.active.errors.required">La actividad es requerida</div>
+            <div *ngIf="submitted && f.active.errors" class="invalid-feedback">
+                <div *ngIf="f.active.errors.required">La actividad es requerida</div>
             </div>
         </div>
         <div class="input-group md-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><fa-icon [icon]='faPhone'></fa-icon></span>
             </div>
-            <input formControlName="phone" [(ngModel)]="customer.phone" [ngClass]="{'is-invalid': submitted && formCustomer.controls.phone.errors }" type="text" class="form-control form-control-user" placeholder="teléfono" />
-            <div *ngIf="submitted && formCustomer.controls.phone.errors" class="invalid-feedback">
-                <div *ngIf="formCustomer.controls.phone.errors.required">El teléfono es requerido</div>
+            <input formControlName="phone" [(ngModel)]="customer.phone" [ngClass]="{'is-invalid': submitted && f.phone.errors }" type="text" class="form-control form-control-user" placeholder="teléfono" />
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">El teléfono es requerido</div>
             </div>
         </div>
         <br>
@@ -59,7 +59,3 @@
         </div>
     </div>
 </form>
-<br>
-<pre class="bg-light">
-    {{ customer | json }}
-</pre>

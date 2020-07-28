@@ -7,9 +7,9 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><fa-icon [icon]='faHome'></fa-icon></span>
             </div>            
-            <select formControlName="typeiva" [(ngModel)]="order.typeiva" [ngClass]="{'is-invalid': submitted && formOrder.controls.aumont.errors }" class="form-control form-control-user">
-                <option>P</option>
-                <option>N</option>
+            <select formControlName="typeiva" [(ngModel)]="order.typeiva" [ngClass]="{'is-invalid': submitted && formOrder.controls.aumont.errors }" class="form-control form-control-user"  placeholder="Tipo de iva"> 
+                <option value="P">Procesado</option>
+                <option value="N">Natural</option>
             </select>
             <div *ngIf="submitted && formOrder.controls.typeiva.errors" class="invalid-feedback">
                 <div *ngIf="formOrder.controls.typeiva.errors.required">El tipo de iva es requerido</div>
@@ -28,7 +28,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><fa-icon [icon]='faHome'></fa-icon></span>
             </div>            
-            <select formControlName="state" [(ngModel)]="order.state" [ngClass]="{'is-invalid': submitted && formOrder.controls.state.errors }" class="form-control form-control-user">
+            <select formControlName="state" [(ngModel)]="order.state" [ngClass]="{'is-invalid': submitted && formOrder.controls.state.errors }" class="form-control form-control-user"  placeholder="Estado de entrega">
                 <option>Entregado</option>
                 <option>En proceso</option>
                 <option>No entregado</option>

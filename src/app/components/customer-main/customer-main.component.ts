@@ -19,24 +19,43 @@ export class CustomerMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.mainReload = false;
-    this.mainCustomer = new Customer();
-    this.mainTitle = "Registro de un nuevo cliente";
+    this.onInit();    
   }
 
-  update($event) : void {
+  onInit(){
+    this.mainCustomer = new Customer();    
+    this.mainTitle = "Registro de un nuevo cliente";    
+  }
+
+  reloadToDo($event){
+    this.mainReload = $event;
+    if(this.mainReload){
+      console.log("Main call to reload list");    
+    }    
+    this.onInit();
+  }
+
+ /* update($event) : void {
     this.mainCustomer = $event;
     this.mainTitle = `Edición del cliente ${$event.name}`;
-  }
-
-  reload($event) : void {
-    this.mainCustomer = new Customer();
-    this.mainTitle = "Registro de un nuevo cliente";
-    this.mainReload = $event;    
-  }
-
+  }*/
 
   reloadDone($event){
     this.mainReload = !$event;    
   }
+  
+  /*reload($event) : void {
+    this.mainCustomer = new Customer();
+    this.mainTitle = "Registro de un nuevo cliente";
+    this.mainReload = $event;    
+  }*/
+  mainUpdate($event){
+    this.mainCustomer = $event;
+    this.mainTitle = "Actualizar el registro de " + $event.name;
+  }
+
+
+
+
 
 }

@@ -1,3 +1,4 @@
+<div>
 <div class="media">    
     <div class="media-body">
       <h4 class="media-heading">Gestión de Clientes</h4>
@@ -6,13 +7,13 @@
   </div>
 <hr/>
 <div class="row">
-  <div class="col-md">
-    <app-customer-form [customer]="mainCustomer" [title]="mainTitle" (listToReload)="reload($event)"></app-customer-form>    
-  </div>
+    <app-customer-form [customer]="mainCustomer"
+     [title]="mainTitle"
+    (flagToReload)="reloadToDo($event)"></app-customer-form>    
     <hr>
-    <div class="col-md">
-    <app-customer-list [reloadList]="mainReload"
-      (customerToEdit)="update($event)"
+    <app-customer-list 
+      [flagToReload]="mainReload"
+      (customerToEdit)="mainUpdate($event)"
       (reloadComplete)="reloadDone($event)"></app-customer-list>
 </div>
 </div>

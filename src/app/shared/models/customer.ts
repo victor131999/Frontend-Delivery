@@ -4,5 +4,5 @@ export class Customer {
     direction : string;
     identy : string;
     active : string="Activo";
-    phone : string;
+    phone : string
 }
