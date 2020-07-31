@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { faHome,faUser, faCalendar, faMapMarkedAlt, faPhone, faAt, faRoad, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle,faHome,faUser, faCalendar, faMapMarkedAlt, faPhone, faAt, faRoad, faSave, faTimes, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms'
 import { Order } from 'src/app/shared/models/order';
 import { OrderService } from 'src/app/core/services/order.service';
@@ -19,6 +19,8 @@ export class OrderFormComponent implements OnInit {
   faRoad = faRoad;
   faSave = faSave;
   faTimes = faTimes;
+  faMoneyBill=faMoneyBill;
+  faCheckCircle=faCheckCircle;
 
   formOrder: FormGroup;
   @Input() order: Order;    
