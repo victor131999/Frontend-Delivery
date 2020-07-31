@@ -12,9 +12,9 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of orders">            
-            <td>{{item.subtotal}}</td>
+            <td>{{item.subtotal | currency }}</td>
             <td>{{item.typeiva}}</td>
-            <td>{{item.aumont}}</td>
+            <td>{{item.aumont | currency }}</td>
             <td>{{item.state}}</td>
             <td class="btn-group">
                 <button class="btn btn-sm btn-info" [routerLink]="['/order', item.idorder]"><fa-icon [icon]='faEye'></fa-icon></button>

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faHome,faUser, faCalendar, faMapMarkedAlt, faPhone, faAt, faRoad, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms'
-import swal from 'sweetalert2'
 import { Order } from 'src/app/shared/models/order';
 import { OrderService } from 'src/app/core/services/order.service';
 

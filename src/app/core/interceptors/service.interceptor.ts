@@ -1,5 +1,4 @@
-  
-import { Injectable } from '@angular/core';
+  import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -23,10 +22,7 @@ export class ServiceInterceptor implements HttpInterceptor {
           console.log(next);
           if(next.status === 201){
             Swal.fire(next.body);
-          }
-          if(next.status === 200){
-            Swal.fire(next.body);
-          }
+          }          
         }
       },
       err => {

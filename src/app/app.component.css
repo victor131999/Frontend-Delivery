@@ -32,7 +32,7 @@ p {
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: #1976d2;
+  background-color: #7ADADD;
   color: white;
   font-weight: 600;
 }
@@ -57,6 +57,7 @@ p {
   max-width: 960px;
   flex-direction: column;
   align-items: center;
+  background-color: #7ADADD;
 }
 
 svg.material-icons {
@@ -77,6 +78,7 @@ svg.material-icons:not(:last-child) {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 16px;
+  background-color: #7ADADD;
 }
 
 .card {
@@ -215,6 +217,7 @@ footer {
   display: flex;
   align-items: center;
   line-height: 20px;
+  
 }
 
 footer a {

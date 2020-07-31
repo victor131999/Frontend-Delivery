@@ -1,11 +1,12 @@
-import { Order } from './order';
+import { Customer } from './customer';
 export class Bill {
     idbill?: string;
-    clientid:string;
+    date: string;
+    customerid:string;
     orderid:string;
     product: string;
     description:string;
     quantity:number;
     total: number;
-    order:Order;
+    customer:Customer;
 }
