@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { faEye, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPlus,faEye, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert2'
 import { Order } from 'src/app/shared/models/order';
 import { OrderService } from 'src/app/core/services/order.service';
@@ -15,6 +15,7 @@ export class OrderListComponent implements OnInit {
   @Input() reloadList: Boolean; 
   @Output() reloadComplete = new EventEmitter<Boolean>();
   
+  faPlus=faPlus;
   faEye = faEye;
   faPencilAlt = faPencilAlt;
   faTrash = faTrash;  
