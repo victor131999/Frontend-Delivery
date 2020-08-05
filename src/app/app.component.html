@@ -5,23 +5,37 @@
     width="40"
     alt="Logo"
     src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZQssUGQtyQ1IUaUXuiSH2Oid61lsSi68N7Q&usqp=CAU"
-  />&nbsp;|&nbsp;
-  <span>
-    <a routerLink="/">Inicio</a>
-  </span>&nbsp;|&nbsp;
-  <span>
-    <a routerLink="/customer">Clientes</a>
-  </span>&nbsp;|&nbsp;
-  <span>
-    <a routerLink="/local">Locales</a>
-  </span>&nbsp;|&nbsp;
-  <span>
-    <a routerLink="/motorized">Vehiculos</a>
-  </span>&nbsp;|&nbsp;
- <span>
-    <a routerLink="/order">Orden</a>
-  </span>&nbsp;|&nbsp;
-    <div class="spacer"></div>       
+  /> 
+    <ul class="nav">
+      <li><a  routerLink="/">Inicio</a></li>
+      <li><a >Cliente</a>
+        <ul>
+          <li><a routerLink="/customer">Registrar</a></li>
+          <li><a routerLink="/">Listar Clientes</a></li>
+        </ul>
+      </li>
+      <li><a>Local</a>
+        <ul>
+          <li><a  routerLink="/local">Registro</a></li>
+          <li><a routerLink="/">Listar locales</a></li>
+        </ul>
+      </li>
+      <li><a>Vehiculos</a>
+        <ul>
+          <li><a routerLink="/motorized">Registrar</a></li>
+          <li><a routerLink="/">Listar vehiculos</a></li>
+        </ul>
+      </li>
+      <li><a >Orden</a>
+        <ul>
+          <li><a routerLink="/order">Registrar</a></li>
+          <li><a routerLink="/">Listar ordenes</a></li>
+        </ul>
+      </li>
+      <li><a href="">Contacto</a></li>
+    </ul>
+
+
 </div>
 
 <div class="content" role="main">
