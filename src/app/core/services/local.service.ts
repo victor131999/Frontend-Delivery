@@ -41,18 +41,15 @@ export class LocalService {
     return this.http.delete<Local>(this.url.concat('/').concat(id), this.httpOptions);
   }
 
-  
-  list(): Observable<Local[]> {
-    return this.http.get<Local[]>(this.url, this.httpOptions)
-      .pipe(
-        retry(1)
-      );
+  count(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/count/locals', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
   }
 
-  listPage(limit:number,last:number): Observable<Local[]> {
-   let limite=String(limit);
-   let laste=String(last);
-    return this.http.get<Local[]>(this.url.concat('/').concat(limite).concat('/').concat(laste), this.httpOptions)
+  list(page: number, limit : number): Observable<Local[]> {
+    return this.http.get<Local[]>(this.url + "/" + page + "/" + limit, this.httpOptions)
       .pipe(
         retry(1)
       );

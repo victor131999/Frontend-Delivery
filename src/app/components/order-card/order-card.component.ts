@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faToggleOn,faAddressCard, faUser, faCalendar, faMapMarkedAlt, faPhone, faAt, faRoad, faSave, faTimes, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faPlus,faToggleOn,faAddressCard, faUser, faCalendar, faMapMarkedAlt, faPhone, faAt, faRoad, faSave, faTimes, faHome } from '@fortawesome/free-solid-svg-icons';
 import { Order } from 'src/app/shared/models/order';
 import { OrderService } from 'src/app/core/services/order.service';
 import { ActivatedRoute } from '@angular/router';
@@ -26,7 +26,7 @@ export class OrderCardComponent implements OnInit {
   faRoad = faRoad;
   faSave = faSave;
   faTimes = faTimes;
-  
+  faPlus=faPlus;
   order : Order = new Order(); 
   bill : Bill = new Bill();
   bills : Bill[];

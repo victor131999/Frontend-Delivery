@@ -51,26 +51,6 @@ export class CustomerListComponent implements OnInit {
   }
 
 
-
-  /*retrieve(id :string): void {
-    this.CustomerService.retrieve(id).subscribe(
-      customer => {
-        swal.fire({
-          title: `<h4>${customer.name}</h4>`,          
-          html: `<dl class="dl-horizontal">
-                    <dt>Nombre:</dt><dd>${customer.name}</dd>
-                    <dt>Direccion:</dt><dd>${customer.direction}</dd>
-                    <dt>Cedula:</dt><dd>${customer.identy}</dd>
-                    <dt>Actividad:</dt><dd>${customer.active}</dd>
-                    <dt>Telefono:</dt><dd>${customer.phone}</dd>                   
-                 </dl>`,                   
-          focusConfirm: false,
-          confirmButtonText: 'Aceptar'
-        })
-        
-      }
-    );
-  }*/
  retrievee(id: string) : void {
     this.customerService.retrievee(id).subscribe(
       customer =>{

@@ -22,66 +22,65 @@ export class LocalListComponent implements OnInit {
   faTrash = faTrash;  
   
   locals : Local[];
-  limit:number;
-  last:number;
+
+  numberPages : number;
+  numberDocs : number;  
+  limit : number = 10;   
+  currentPage : number = 1;
+  pages : Array<number> = [];
   constructor(private LocalService: LocalService,private Group: FormBuilder) { }
 
 
   ngOnInit(): void {
-   // this.list(); 
-   this.queryForm=this.Group.group({
-    limit: ['',[Validators.required]],
-    });
-    this.limit=5;
-    this.last=0;
-    this.listPage(this.limit,this.last);
+    this.count();
   }
 
-  next(){
-    if(this.limit>this.locals.length){
-      return "Fin";
-    }else{
-      this.last=this.limit+this.last;
-      console.log(this.last);
-    this.listPage(this.limit,this.last);
-    }
+  init() : void{
+    this.pages = [];    
+    this.currentPage = 1;    
   }
-
-  ant(){
-    if(this.limit<0){
-      return "Fin";
-    }
-    this.last=this.last-this.limit;
-    console.log(this.last);
-    this.listPage(this.limit,this.last);
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if(changes.reloadList.currentValue){
-      if(this.reloadList){
-        this.list();
+  count(): void {
+    this.LocalService.count().subscribe(
+      result => {        
+        console.log(result);
+        this.numberDocs = result.numberDocs;                           
+        this.calcNumberPages();
       }
-    }
+    );
   }
 
+  calcNumberPages() {   
+    this.init();    
+    this.numberPages = Math.floor(this.numberDocs / this.limit);
+    this.numberPages++;            
+    for (let index = 1; index <= this.numberPages; index++) {            
+      this.pages.push(index);
+    }    
+    this.loadPage(this.currentPage);
+  }
+  changeLimit($event){
+    this.limit = $event.target.value;
+    this.calcNumberPages();
+  }
+
+  loadPage(pg : number){    
+    this.currentPage = pg;    
+    this.LocalService.list(pg, this.limit).subscribe(
+      result => {
+        console.log(result);
+        this.locals = result      
+      }
+    )
+  }
   list() : void {
-    this.LocalService.list().subscribe(
+    this.LocalService.list(1,100).subscribe(
       result => {      
-          
         this.locals = result;                
         this.reloadComplete.emit(true);
       }
     );
   }
 
-  listPage(limit:number,last:number) : void {
-    this.LocalService.listPage(limit,last).subscribe(
-      result => {      
-        this.locals = result;                
-        this.reloadComplete.emit(true);
-      }
-    );
-  }
 
   update(local: Local) {    
     this.localToEdit.emit(local);
