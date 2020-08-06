@@ -67,7 +67,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     OrderFormComponent,
     OrderCardComponent,
 
-    MasmasPipe
+    MasmasPipe,
   ],
   imports: [
     BrowserModule,
