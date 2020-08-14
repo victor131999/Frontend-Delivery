@@ -18,15 +18,15 @@ import { CustomerService } from './core/services/customer.service';
 import { CustomerCardComponent } from './components/customer-card/customer-card.component';
 
 //locales
-import { LocalMainComponent } from './components/local-main/local-main.component';
-import { LocalListComponent } from './components/local-main/local-list/local-list.component';
-import { LocalFormComponent } from './components/local-main/local-form/local-form.component';
 import { LocalService } from './core/services/local.service';
+import { LocalFormComponent } from './components/local-form/local-form.component';
+import { LocalListComponent } from './components/local-list/local-list.component';
+import { LocalCardComponent } from './components/local-card/local-card.component';
 
 //vehiculos
-import { MotorizedMainComponent } from './components/motorized-main/motorized-main.component';
-import { MotorizedListComponent } from './components/motorized-main/motorized-list/motorized-list.component';
-import { MotorizedFormComponent } from './components/motorized-main/motorized-form/motorized-form.component';
+import { MotorizedFormComponent } from './components/motorized-form/motorized-form.component';
+import { MotorizedListComponent } from './components/motorized-list/motorized-list.component';
+import { MotorizedCardComponent } from './components/motorized-card/motorized-card.component';
 import { MotorizedService } from './core/services/motorized.service';
 
 //Ordenes
@@ -52,14 +52,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CustomerFormComponent,
     CustomerCardComponent,
 
-    LocalMainComponent,
     LocalListComponent,
     LocalFormComponent,
+    LocalCardComponent,
 
-
-    MotorizedMainComponent,
     MotorizedListComponent,
     MotorizedFormComponent,
+    MotorizedCardComponent,
  
 
     OrderMainComponent,

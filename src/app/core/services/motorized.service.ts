@@ -14,7 +14,7 @@ export class MotorizedService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Accept: 'application/json'      
+      'Accept': 'application/json'      
     })
   };
 
@@ -37,13 +37,20 @@ export class MotorizedService {
     );
   }
 
+  count(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/count/motorizeds', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
+
   delete(id: string): Observable<any>  {    
     return this.http.delete<Motorized>(this.url.concat('/').concat(id), this.httpOptions);
   }
 
   
-  list(): Observable<Motorized[]> {
-    return this.http.get<Motorized[]>(this.url, this.httpOptions)
+  list(page: number, limit : number): Observable<Motorized[]> {
+    return this.http.get<Motorized[]>(this.url + "/" + page + "/" + limit, this.httpOptions)
       .pipe(
         retry(1)
       );

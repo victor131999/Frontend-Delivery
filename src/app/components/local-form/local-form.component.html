@@ -1,0 +1,54 @@
+<div class="col-12">
+    <div class="breadcumb-area bg-img">		
+            <div class="bradcumbContent">
+                <h2>{{title}}</h2>
+            </div>
+        </div>
+    
+        <div class="top-popular-courses-area mt-100 section-padding-100-70">
+            <section class="contact-area mt-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="contact-content">
+                                <div class="row">																
+                                    <div class="col-12">
+                                        <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">										
+    
+                                            <form [formGroup]="form" (ngSubmit)="onSubmit()" method="post">
+                                                <div class="row d-flex align-items-center">
+                                                    <div class="col-1">											
+                                                        <fa-icon class="fa-2x" [icon]='faFont'></fa-icon>
+                                                    </div>
+                                                    <div class="col-5">													
+                                                        <input formControlName="name" type="text" class="form-control" [(ngModel)]="local.name" [ngClass]="{'is-invalid': submitted && f.name.errors}" placeholder="Nombre" />
+                                                        <div class="invalid-feedback" *ngIf=" submitted && f.name.errors" class="invalid-feedback">
+                                                            <small *ngIf=" submitted && f.name.errors.required">El nombre es requerido</small>
+                                                        </div>													
+                                                    </div>																																		
+                                                    <div class="col-1">											
+                                                        <fa-icon class="fa-2x" [icon]='faAlignCenter'></fa-icon>
+                                                    </div>
+                                                    <div class="col-5">													
+                                                        <input formControlName="direction" type="text" class="form-control" [(ngModel)]="local.direction" [ngClass]="{'is-invalid':  submitted && f.direction.errors}" placeholder="dirección" />
+                                                        <div class="invalid-feedback" *ngIf=" submitted && f.direction.errors" class="invalid-feedback">
+                                                            <small *ngIf=" submitted && f.direction.errors.required">La direccion es requerida</small>
+                                                        </div>													
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-end">																																
+                                                    <button class="btn btn-sm academy-btn btn-3" type="submit"><fa-icon [icon]='faSave'></fa-icon>&nbsp;Guardar</button>
+                                                    <button (click)="onReset()"  class="btn btn-sm academy-btn btn-2 ml-2" type="button"><fa-icon [icon]='faTimes'></fa-icon>&nbsp;Cancelar</button>												
+                                                </div>											
+                                            </form>								
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>

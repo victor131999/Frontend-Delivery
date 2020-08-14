@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MotorizedMainComponent } from './motorized-main.component';
+import { MotorizedListComponent } from './motorized-list.component';
 
-describe('MotorizedMainComponent', () => {
-  let component: MotorizedMainComponent;
-  let fixture: ComponentFixture<MotorizedMainComponent>;
+describe('MotorizedListComponent', () => {
+  let component: MotorizedListComponent;
+  let fixture: ComponentFixture<MotorizedListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MotorizedMainComponent ]
+      declarations: [ MotorizedListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MotorizedMainComponent);
+    fixture = TestBed.createComponent(MotorizedListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

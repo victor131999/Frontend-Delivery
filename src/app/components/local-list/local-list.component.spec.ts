@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LocalMainComponent } from './local-main.component';
+import { LocalListComponent } from './local-list.component';
 
-describe('LocalMainComponent', () => {
-  let component: LocalMainComponent;
-  let fixture: ComponentFixture<LocalMainComponent>;
+describe('LocalListComponent', () => {
+  let component: LocalListComponent;
+  let fixture: ComponentFixture<LocalListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocalMainComponent ]
+      declarations: [ LocalListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LocalMainComponent);
+    fixture = TestBed.createComponent(LocalListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

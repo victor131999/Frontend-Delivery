@@ -16,14 +16,12 @@
       </li>
       <li><a>Local</a>
         <ul>
-          <li><a  routerLink="/local">Registro</a></li>
-          <li><a routerLink="/">Listar locales</a></li>
+          <li><a  [routerLink]="['/local/list']" routerLinkActive="router-link-active" >Registro</a></li>
         </ul>
       </li>
       <li><a>Vehiculos</a>
         <ul>
-          <li><a routerLink="/motorized">Registrar</a></li>
-          <li><a routerLink="/">Listar vehiculos</a></li>
+          <li><a [routerLink]="['/motorized/list']" routerLinkActive="router-link-active" >Registrar</a></li>
         </ul>
       </li>
       <li><a >Orden</a>

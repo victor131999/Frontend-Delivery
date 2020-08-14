@@ -1,10 +1,8 @@
-import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { faEye, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-import swal from 'sweetalert2'
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { Local } from 'src/app/shared/models/local';
 import { LocalService } from 'src/app/core/services/local.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { faEye, faPlus, faPencilAlt,faTrash } from '@fortawesome/free-solid-svg-icons';
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-local-list',
@@ -12,24 +10,19 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./local-list.component.css']
 })
 export class LocalListComponent implements OnInit {
-  queryForm:FormGroup;
-  @Output() localToEdit = new EventEmitter<Local>();
-  @Input() reloadList: Boolean; 
-  @Output() reloadComplete = new EventEmitter<Boolean>();
-  
+  faTrash=faTrash;
   faEye = faEye;
+  faPlus = faPlus;
   faPencilAlt = faPencilAlt;
-  faTrash = faTrash;  
-  
-  locals : Local[];
 
+  locals : Local[];  
   numberPages : number;
   numberDocs : number;  
   limit : number = 10;   
   currentPage : number = 1;
   pages : Array<number> = [];
-  constructor(private LocalService: LocalService,private Group: FormBuilder) { }
-
+  @Output() reloadComplete = new EventEmitter<Boolean>();
+  constructor(private LocalService: LocalService) { }
 
   ngOnInit(): void {
     this.count();
@@ -39,6 +32,7 @@ export class LocalListComponent implements OnInit {
     this.pages = [];    
     this.currentPage = 1;    
   }
+
   count(): void {
     this.LocalService.count().subscribe(
       result => {        
@@ -58,6 +52,7 @@ export class LocalListComponent implements OnInit {
     }    
     this.loadPage(this.currentPage);
   }
+
   changeLimit($event){
     this.limit = $event.target.value;
     this.calcNumberPages();
@@ -72,57 +67,35 @@ export class LocalListComponent implements OnInit {
       }
     )
   }
-  list() : void {
+
+  list(): void {
     this.LocalService.list(1,100).subscribe(
-      result => {      
-        this.locals = result;                
-        this.reloadComplete.emit(true);
+      result => {        
+        this.locals = result;   
+        this.reloadComplete.emit(true);     
       }
     );
   }
 
-
-  update(local: Local) {    
-    this.localToEdit.emit(local);
-  }
-
-retrieve(id: string) : void {
-        this.LocalService.retrieve(id).subscribe(
-          local =>{
-            swal.fire({
-          title: `<h4>${local.name}</h4>`,
-          html: `<dl class="dl-horizontal">
-            <label>Nombre:</label><span>${local.name}</span><br>
-            <label>Direccion:</label><span>${local.direction}</span><br>
-          </dl>`,
-          focusConfirm: false,
-          confirmButtonText: 'Aceptar'
-        })
-      }
-    );
-  }
-  
-
-  delete(local: Local) : void {
+  delete(local: Local): void {
     swal.fire({
       title: '¿Está seguro?',
-      text: `Se va a eliminar el registro de ${local.name}`,
+      text: `El registro de ${local.name} será eliminado permanentemente`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
     }).then((option) => {
       if (option.value) {
         this.LocalService.delete(local.idlocal).subscribe(
-          result => {
+          result => {                        
             this.list();
           }
-        );       
+        );
       }
-    })
+    });
   }
 
 }
-

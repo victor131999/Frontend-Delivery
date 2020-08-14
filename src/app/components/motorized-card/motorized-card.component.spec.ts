@@ -1,19 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MotorizedListComponent } from './motorized-list.component';
 
-describe('MotorizedListComponent', () => {
-  let component: MotorizedListComponent;
-  let fixture: ComponentFixture<MotorizedListComponent>;
+import { MotorizedCardComponent } from './motorized-card.component';
+
+describe('MotorizedCardComponent', () => {
+  let component: MotorizedCardComponent;
+  let fixture: ComponentFixture<MotorizedCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MotorizedListComponent ]
+      declarations: [ MotorizedCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MotorizedListComponent);
+    fixture = TestBed.createComponent(MotorizedCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

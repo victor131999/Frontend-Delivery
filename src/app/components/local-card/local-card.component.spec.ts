@@ -1,19 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { LocalListComponent } from './local-list.component';
 
-describe('LocalListComponent', () => {
-  let component: LocalListComponent;
-  let fixture: ComponentFixture<LocalListComponent>;
+import { LocalCardComponent } from './local-card.component';
+
+describe('LocalCardComponent', () => {
+  let component: LocalCardComponent;
+  let fixture: ComponentFixture<LocalCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocalListComponent ]
+      declarations: [ LocalCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LocalListComponent);
+    fixture = TestBed.createComponent(LocalCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
