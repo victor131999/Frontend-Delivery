@@ -1,0 +1,55 @@
+  
+<div class="academy-courses-area section-padding-100-0">
+    <div class="container">
+        <div class="row col-12">
+            <div class="row mb-3 ml-3">
+                 <button class="btn btn-sm academy-btn btn-3" [routerLink]="['/product/form']"><fa-icon [icon]='faPlus'></fa-icon>&nbsp;Agregar</button>&nbsp;&nbsp;
+                    Elementos por página:&nbsp;
+                          <select [value]="limit" (change)="changeLimit($event)">
+                              <option>5</option>
+                              <option>10</option>
+                              <option>20</option>
+                          </select>
+                        </div>
+            <table class="table table-hovered">
+                <thead>
+                    <tr>
+                        <td>N°</td>
+                        <td>Nombre</td>
+                        <td>Marca</td>
+                        <td>Descripción</td>                                               
+                        <td>Página {{currentPage}} de {{numberPages}}</td>
+                      </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of products;let i = index;">            
+                        <td>{{i | masmas:(currentPage - 1) * limit + 1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.brand }}</td> 
+                        <td>{{item.description }}</td>                                                                                       
+                        <td class="btn-group">    
+                            <button class="btn btn-sm academy-btn btn-3" [routerLink]="['/product/card', item.idproduct]"><fa-icon [icon]='faEye'></fa-icon></button>                        
+                            <button class="btn btn-sm academy-btn btn-2" [routerLink]="['/product/form', item.idproduct]"><fa-icon [icon]='faPencilAlt'></fa-icon></button>                        
+                            <button class="btn btn-sm academy-btn btn-3" (click)="delete(item)"><fa-icon [icon]='faTrash'></fa-icon></button>   
+                        </td>
+                    </tr>
+                </tbody>            
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <button class="page-link" (click)="loadPage(1)" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </button>
+                  </li>
+                  <li class="page-item" *ngFor="let pg of pages"><button class="page-link" (click)="loadPage(pg)">{{pg}}</button></li>              
+                  <li class="page-item">
+                    <button class="page-link" (click)="loadPage(numberPages)" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+        </div>
+    </div>
+    </div>

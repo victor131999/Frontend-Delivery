@@ -29,6 +29,12 @@ import { MotorizedListComponent } from './components/motorized-list/motorized-li
 import { MotorizedCardComponent } from './components/motorized-card/motorized-card.component';
 import { MotorizedService } from './core/services/motorized.service';
 
+//locales
+import { ProductService } from './core/services/product.service';
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+
 //Ordenes
 import { OrderMainComponent } from './components/order-main/order-main.component';
 import { OrderListComponent } from './components/order-main/order-list/order-list.component';
@@ -44,6 +50,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +63,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LocalFormComponent,
     LocalCardComponent,
 
+    ProductListComponent,
+    ProductFormComponent,
+    ProductCardComponent,
+
     MotorizedListComponent,
     MotorizedFormComponent,
     MotorizedCardComponent,
@@ -67,6 +78,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     OrderCardComponent,
 
     MasmasPipe,
+
   ],
   imports: [
     BrowserModule,
@@ -76,7 +88,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FontAwesomeModule,
     NgxPaginationModule 
   ],
-  providers: [CustomerService, LocalService, MotorizedService, OrderService, {
+  providers: [CustomerService, LocalService,ProductService, MotorizedService, OrderService, {
     provide: HTTP_INTERCEPTORS,
     useClass: ServiceInterceptor,
     multi: true
