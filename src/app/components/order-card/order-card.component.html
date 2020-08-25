@@ -127,9 +127,9 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><fa-icon [icon]='faUser'></fa-icon></span>
                 </div>            
-                <input formControlName="quantity" [(ngModel)]="bill.quantity" [ngClass]="{'is-invalid': submitted && f.quantity.errors }" class="form-control form-control-user"  placeholder="Costo">
+                <input formControlName="quantity" type="number" [(ngModel)]="bill.quantity" [ngClass]="{'is-invalid': submitted && f.quantity.errors }" class="form-control form-control-user"  placeholder="unidades">
                 <div *ngIf="submitted && f.quantity.errors" class="invalid-feedback">
-                    <div *ngIf="f.quantity.errors.required">El costo es requerido</div>
+                    <div *ngIf="f.quantity.errors.required">El numero de unidades es requerido</div>
                 </div>
             </div>
           

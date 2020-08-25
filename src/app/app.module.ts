@@ -29,7 +29,7 @@ import { MotorizedListComponent } from './components/motorized-list/motorized-li
 import { MotorizedCardComponent } from './components/motorized-card/motorized-card.component';
 import { MotorizedService } from './core/services/motorized.service';
 
-//locales
+//Productos
 import { ProductService } from './core/services/product.service';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
