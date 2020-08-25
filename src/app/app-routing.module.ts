@@ -18,6 +18,8 @@ import { MotorizedListComponent } from './components/motorized-list/motorized-li
 import { MotorizedFormComponent } from './components/motorized-form/motorized-form.component';
 import { MotorizedCardComponent } from './components/motorized-card/motorized-card.component';
 
+import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
+
 
 const routes: Routes=[
   {path: '', redirectTo: '/',pathMatch: 'full'},
@@ -40,7 +42,9 @@ const routes: Routes=[
   {path: 'motorized/card/:id', component: MotorizedCardComponent},
 
   {path: 'order',component:OrderMainComponent},
-  {path: 'order/:id',component:OrderCardComponent}
+  {path: 'order/:id',component:OrderCardComponent},
+
+  {path: 'signup', component: SignUpFormComponent}
 ];
 
 @NgModule({

@@ -48,6 +48,8 @@ import { MasmasPipe } from './shared/pipes/masmas.pipe';
 //paginacion
 import { NgxPaginationModule } from 'ngx-pagination';
 
+//Registro
+import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
 
 
 
@@ -79,6 +81,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
     MasmasPipe,
 
+    SignUpFormComponent
   ],
   imports: [
     BrowserModule,
