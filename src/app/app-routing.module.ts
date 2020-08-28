@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CustomerCardComponent } from './components/customer-card/customer-card.component';
-import { CustomerMainComponent } from './components/customer-main/customer-main.component';
 
-import { OrderMainComponent } from './components/order-main/order-main.component';
-import { OrderCardComponent } from './components/order-card/order-card.component';
+import { CustomerCardComponent } from './components/customer-card/customer-card.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { CustomerFormComponent } from './components/customer-form/customer-form.component';
+
+import { ChargeListComponent } from './components/charge-list/charge-list.component';
+import { ChargeFormComponent } from './components/charge-form/charge-form.component';
+import { ChargeCardComponent } from './components/charge-card/charge-card.component';
 
 import { LocalListComponent } from './components/local-list/local-list.component';
 import { LocalFormComponent } from './components/local-form/local-form.component';
@@ -23,8 +26,10 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
 
 const routes: Routes=[
   {path: '', redirectTo: '/',pathMatch: 'full'},
-  {path: 'customer',component:CustomerMainComponent},
-  {path: 'customer/:id',component:CustomerCardComponent},
+  {path: 'charge/list', component: ChargeListComponent},
+  {path: 'charge/form', component: ChargeFormComponent},
+  {path: 'charge/form/:id', component: ChargeFormComponent},
+  {path: 'charge/card/:id', component: ChargeCardComponent},
   
   {path: 'local/list', component: LocalListComponent},
   {path: 'local/form', component: LocalFormComponent},
@@ -41,8 +46,10 @@ const routes: Routes=[
   {path: 'motorized/form/:id', component: MotorizedFormComponent},
   {path: 'motorized/card/:id', component: MotorizedCardComponent},
 
-  {path: 'order',component:OrderMainComponent},
-  {path: 'order/:id',component:OrderCardComponent},
+  {path: 'customer/list', component: CustomerListComponent},
+  {path: 'customer/form', component: CustomerFormComponent},
+  {path: 'customer/form/:id', component: CustomerFormComponent},
+  {path: 'customer/card/:id', component: CustomerCardComponent},
 
   {path: 'signup', component: SignUpFormComponent}
 ];

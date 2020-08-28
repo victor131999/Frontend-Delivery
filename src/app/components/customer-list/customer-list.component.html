@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row col-12">
             <div class="row mb-3 ml-3">
-                 <button class="btn btn-sm academy-btn btn-3" [routerLink]="['/motorized/form']"><fa-icon [icon]='faPlus'></fa-icon>&nbsp;Agregar</button>&nbsp;&nbsp;
+                 <button class="btn btn-sm academy-btn btn-3" [routerLink]="['/customer/form']"><fa-icon [icon]='faPlus'></fa-icon>&nbsp;Agregar</button>&nbsp;&nbsp;
                     Elementos por página:&nbsp;
                           <select [value]="limit" (change)="changeLimit($event)">
                               <option>5</option>
@@ -15,19 +15,25 @@
                 <thead>
                     <tr>
                         <td>N°</td>
-                        <td>Marca</td>
-                        <td>Vehiculo</td>                                               
+                        <td>Nombre</td>
+                        <td>Dirección</td>
+                        <td>Identificación</td>   
+                        <td>Actividad</td>
+                        <td>Celular</td>                                             
                         <td>Página {{currentPage}} de {{numberPages}}</td>
                       </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of motorizeds;let i = index;">            
+                    <tr *ngFor="let item of customers;let i = index;">            
                         <td>{{i | masmas:(currentPage - 1) * limit + 1}}</td>
-                        <td>{{item.brand}}</td>
-                        <td>{{item.vehicle }}</td>                                                                                       
+                        <td>{{item.name}}</td>
+                        <td>{{item.direction }}</td> 
+                        <td>{{item.identy }}</td>  
+                        <td>{{item.active }}</td> 
+                        <td>{{item.phone }}</td>                                                                                     
                         <td class="btn-group">    
-                            <button class="btn btn-sm academy-btn btn-3" [routerLink]="['/motorized/card', item.idmotorized]"><fa-icon [icon]='faEye'></fa-icon></button>                        
-                            <button class="btn btn-sm academy-btn btn-2" [routerLink]="['/motorized/form', item.idmotorized]"><fa-icon [icon]='faPencilAlt'></fa-icon></button>                        
+                            <button class="btn btn-sm academy-btn btn-3" [routerLink]="['/customer/card', item.idcustomer]"><fa-icon [icon]='faEye'></fa-icon></button>                        
+                            <button class="btn btn-sm academy-btn btn-2" [routerLink]="['/customer/form', item.idcustomer]"><fa-icon [icon]='faPencilAlt'></fa-icon></button>                        
                             <button class="btn btn-sm academy-btn btn-3" (click)="delete(item)"><fa-icon [icon]='faTrash'></fa-icon></button>   
                         </td>
                     </tr>

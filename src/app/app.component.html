@@ -10,7 +10,7 @@
       <li><a  routerLink="/">Inicio</a></li>
       <li><a >Cliente</a>
         <ul>
-          <li><a routerLink="/customer">Registrar</a></li>
+          <li><a [routerLink]="['/customer/list']" routerLinkActive="router-link-active">Registrar</a></li>
           <li><a routerLink="/">Listar Clientes</a></li>
         </ul>
       </li>
@@ -26,12 +26,12 @@
       </li>
       <li><a>Vehiculos</a>
         <ul>
-          <li><a [routerLink]="['/motorized/list']" routerLinkActive="router-link-active" >Registrar</a></li>
+          <li><a [routerLink]="['/motorized/list']" routerLinkActive="router-link-active" >Registro</a></li>
         </ul>
       </li>
       <li><a >Orden</a>
         <ul>
-          <li><a routerLink="/order">Registrar</a></li>
+          <li><a [routerLink]="['/charge/list']" routerLinkActive="router-link-active" >Registro</a></li>
           <li><a routerLink="/">Listar ordenes</a></li>
         </ul>
       </li>

@@ -3,4 +3,7 @@ export class Product {
     name : string;
     brand:string;
     description:string;
+    typeiva:string;
+    cost:number;
+    subtotal:number
 }

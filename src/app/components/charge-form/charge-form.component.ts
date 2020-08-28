@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faLowVision,faMortarPestle,faHourglass,faBars,faWindowMaximize,faAlignCenter,faFont, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { MotorizedService } from 'src/app/core/services/motorized.service';
-import { Motorized } from 'src/app/shared/models/motorized';
+import { ChargeService } from 'src/app/core/services/charge.service';
+import { Charge } from 'src/app/shared/models/charge';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-motorized-form',
-  templateUrl: './motorized-form.component.html',
-  styleUrls: ['./motorized-form.component.css']
+  selector: 'app-charge-form',
+  templateUrl: './charge-form.component.html',
+  styleUrls: ['./charge-form.component.css']
 })
-export class MotorizedFormComponent implements OnInit {
+export class ChargeFormComponent implements OnInit {
 
   faSave = faSave;
   faTimes = faTimes;
@@ -22,13 +22,13 @@ export class MotorizedFormComponent implements OnInit {
   faWindowMaximize=faWindowMaximize;
   faAlignCenter=faAlignCenter;
 
-  motorized : Motorized;
+  charge : Charge;
   title : string;
   form: FormGroup;
 
   submitted = false;
 
-  constructor(private MotorizedService: MotorizedService, 
+  constructor(private ChargeService: ChargeService, 
     private formBuilder: FormBuilder, 
     private activatedRoute : ActivatedRoute,
     private router: Router) { }
@@ -37,24 +37,24 @@ export class MotorizedFormComponent implements OnInit {
 
     this.activatedRoute.params.subscribe( params =>{
       if(params['id']){
-        this.MotorizedService.retrieve(params['id'])
+        this.ChargeService.retrieve(params['id'])
             .subscribe(result => 
               {
-                this.motorized = result;
-                this.motorized.idmotorized = params['id'];
-                this.title = "Actualizando " + this.motorized.brand;                
+                this.charge = result;
+                this.charge.idcharge = params['id'];
+                this.title = "Actualizando " + this.charge.date;                
               }
             );
       }
       else {
-        this.motorized = new Motorized();
-        this.title = "Nuevo registro de vehiculo"
+        this.charge = new Charge();
+        this.title = "Nuevo registro de chargeo"
       }
     });
 
     this.form = this.formBuilder.group({
-      brand : ['', [Validators.required]],
-      vehicle : ['', [Validators.required]]
+      state : ['', [Validators.required]],
+      description : ['', [Validators.required]]
     });
   }
 
@@ -71,13 +71,13 @@ export class MotorizedFormComponent implements OnInit {
         return;
     }
     
-    this.MotorizedService.save(this.motorized).subscribe(
+    this.ChargeService.save(this.charge).subscribe(
         (result) => {                  
           this.submitted = false;
           if(result !== undefined)
           {
             if(result.icon === "success"){                            
-              this.router.navigate(['motorized/list']);
+              this.router.navigate(['charge/list']);
               return;
             }                     
           }
@@ -86,7 +86,7 @@ export class MotorizedFormComponent implements OnInit {
   }
 
   onReset() {
-    this.motorized = new Motorized();    
+    this.charge = new Charge();    
     this.form.reset();
     this.submitted = false;
   }

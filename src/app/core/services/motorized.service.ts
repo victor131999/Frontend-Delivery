@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Motorized } from '../../shared/models/motorized';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable, of } from 'rxjs';
-import { retry, catchError, tap } from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import { retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import { retry, catchError, tap } from 'rxjs/operators';
 export class MotorizedService {
 
   url : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/motorizeds";
+  urls : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/page/motorizeds";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -50,7 +51,7 @@ export class MotorizedService {
 
   
   list(page: number, limit : number): Observable<Motorized[]> {
-    return this.http.get<Motorized[]>(this.url + "/" + page + "/" + limit, this.httpOptions)
+    return this.http.get<Motorized[]>(this.urls + "/" + page + "/" + limit, this.httpOptions)
       .pipe(
         retry(1)
       );

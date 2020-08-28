@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { faLowVision,faMortarPestle,faHourglass,faBars,faWindowMaximize,faAlignCenter,faFont, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { CustomerService } from 'src/app/core/services/customer.service';
-import { Customer } from 'src/app/shared/models/customer';
+import { ChargeService } from 'src/app/core/services/charge.service';
+import { Charge } from 'src/app/shared/models/charge';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-customer-card',
-  templateUrl: './customer-card.component.html',
-  styleUrls: ['./customer-card.component.css']
+  selector: 'app-charge-card',
+  templateUrl: './charge-card.component.html',
+  styleUrls: ['./charge-card.component.css']
 })
-export class CustomerCardComponent implements OnInit {
+export class ChargeCardComponent implements OnInit {
 
   faSave = faSave;
   faTimes = faTimes;
@@ -21,10 +21,10 @@ export class CustomerCardComponent implements OnInit {
   faWindowMaximize=faWindowMaximize;
   faAlignCenter=faAlignCenter;
 
-  customer : Customer;
+  charge : Charge;
   title : string;
 
-  constructor(private CustomerService: CustomerService,     
+  constructor(private ChargeService: ChargeService,     
     private activatedRoute : ActivatedRoute,
     private router: Router) {
       
@@ -34,12 +34,12 @@ export class CustomerCardComponent implements OnInit {
     
     this.activatedRoute.params.subscribe( params =>{
       if(params['id']){
-        this.CustomerService.retrieve(params['id'])
+        this.ChargeService.retrieve(params['id'])
             .subscribe(result => 
               {
-                this.customer = result;
-                this.customer.idcustomer = params['id'];
-                this.title = this.customer.name;                
+                this.charge = result;
+                this.charge.idcharge = params['id'];
+                this.title = this.charge.date;                
               }
             );
       }
@@ -48,7 +48,7 @@ export class CustomerCardComponent implements OnInit {
   }
 
   toList() : void {
-    this.router.navigate(['customer/list']);
+    this.router.navigate(['charge/list']);
   }
 
 

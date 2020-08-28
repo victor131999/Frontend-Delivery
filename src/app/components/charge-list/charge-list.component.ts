@@ -1,28 +1,28 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-import { Motorized } from 'src/app/shared/models/motorized';
-import { MotorizedService } from 'src/app/core/services/motorized.service';
+import { Charge } from 'src/app/shared/models/charge';
+import { ChargeService } from 'src/app/core/services/charge.service';
 import { faEye, faPlus, faPencilAlt,faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert2'
 
 @Component({
-  selector: 'app-motorized-list',
-  templateUrl: './motorized-list.component.html',
-  styleUrls: ['./motorized-list.component.css']
+  selector: 'app-charge-list',
+  templateUrl: './charge-list.component.html',
+  styleUrls: ['./charge-list.component.css']
 })
-export class MotorizedListComponent implements OnInit {
+export class ChargeListComponent implements OnInit {
   faTrash=faTrash;
   faEye = faEye;
   faPlus = faPlus;
   faPencilAlt = faPencilAlt;
 
-  motorizeds : Motorized[];  
+  charges : Charge[];  
   numberPages : number;
   numberDocs : number;  
   limit : number = 10;   
   currentPage : number = 1;
   pages : Array<number> = [];
   @Output() reloadComplete = new EventEmitter<Boolean>();
-  constructor(private MotorizedService: MotorizedService) { }
+  constructor(private ChargeService: ChargeService) { }
 
   ngOnInit(): void {
     this.count();
@@ -34,7 +34,7 @@ export class MotorizedListComponent implements OnInit {
   }
 
   count(): void {
-    this.MotorizedService.count().subscribe(
+    this.ChargeService.count().subscribe(
       result => {        
         console.log(result);
         this.numberDocs = result.numberDocs;                           
@@ -60,27 +60,27 @@ export class MotorizedListComponent implements OnInit {
 
   loadPage(pg : number){    
     this.currentPage = pg;    
-    this.MotorizedService.list(pg, this.limit).subscribe(
+    this.ChargeService.list(pg, this.limit).subscribe(
       result => {
         console.log(result);
-        this.motorizeds = result      
+        this.charges = result      
       }
     )
   }
 
   list(): void {
-    this.MotorizedService.list(1,100).subscribe(
+    this.ChargeService.list(1,100).subscribe(
       result => {        
-        this.motorizeds = result;   
+        this.charges = result;   
         this.reloadComplete.emit(true);     
       }
     );
   }
 
-  delete(motorized: Motorized): void {
+  delete(charge: Charge): void {
     swal.fire({
       title: '¿Está seguro?',
-      text: `El registro de ${motorized.brand} será eliminado permanentemente`,
+      text: `El registro de ${charge.date} será eliminado permanentemente`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -89,7 +89,7 @@ export class MotorizedListComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((option) => {
       if (option.value) {
-        this.MotorizedService.delete(motorized.idmotorized).subscribe(
+        this.ChargeService.delete(charge.idcharge).subscribe(
           result => {                        
             this.list();
           }

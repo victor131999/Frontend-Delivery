@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faLowVision,faMortarPestle,faHourglass,faBars,faWindowMaximize,faAlignCenter,faFont, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { MotorizedService } from 'src/app/core/services/motorized.service';
-import { Motorized } from 'src/app/shared/models/motorized';
+import { CustomerService } from 'src/app/core/services/customer.service';
+import { Customer } from 'src/app/shared/models/customer';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-motorized-form',
-  templateUrl: './motorized-form.component.html',
-  styleUrls: ['./motorized-form.component.css']
+  selector: 'app-customer-form',
+  templateUrl: './customer-form.component.html',
+  styleUrls: ['./customer-form.component.css']
 })
-export class MotorizedFormComponent implements OnInit {
+export class CustomerFormComponent implements OnInit {
 
   faSave = faSave;
   faTimes = faTimes;
@@ -22,13 +22,13 @@ export class MotorizedFormComponent implements OnInit {
   faWindowMaximize=faWindowMaximize;
   faAlignCenter=faAlignCenter;
 
-  motorized : Motorized;
+  customer : Customer;
   title : string;
   form: FormGroup;
 
   submitted = false;
 
-  constructor(private MotorizedService: MotorizedService, 
+  constructor(private CustomerService: CustomerService, 
     private formBuilder: FormBuilder, 
     private activatedRoute : ActivatedRoute,
     private router: Router) { }
@@ -37,24 +37,27 @@ export class MotorizedFormComponent implements OnInit {
 
     this.activatedRoute.params.subscribe( params =>{
       if(params['id']){
-        this.MotorizedService.retrieve(params['id'])
+        this.CustomerService.retrieve(params['id'])
             .subscribe(result => 
               {
-                this.motorized = result;
-                this.motorized.idmotorized = params['id'];
-                this.title = "Actualizando " + this.motorized.brand;                
+                this.customer = result;
+                this.customer.idcustomer = params['id'];
+                this.title = "Actualizando " + this.customer.name;                
               }
             );
       }
       else {
-        this.motorized = new Motorized();
-        this.title = "Nuevo registro de vehiculo"
+        this.customer = new Customer();
+        this.title = "Nuevo registro de customero"
       }
     });
 
     this.form = this.formBuilder.group({
-      brand : ['', [Validators.required]],
-      vehicle : ['', [Validators.required]]
+      name : ['', [Validators.required]],
+      direction : ['', [Validators.required]],
+      identy : ['', [Validators.required]],
+      active: ['', [Validators.required]],
+      phone: ['', [Validators.required]]
     });
   }
 
@@ -71,13 +74,13 @@ export class MotorizedFormComponent implements OnInit {
         return;
     }
     
-    this.MotorizedService.save(this.motorized).subscribe(
+    this.CustomerService.save(this.customer).subscribe(
         (result) => {                  
           this.submitted = false;
           if(result !== undefined)
           {
             if(result.icon === "success"){                            
-              this.router.navigate(['motorized/list']);
+              this.router.navigate(['customer/list']);
               return;
             }                     
           }
@@ -86,7 +89,7 @@ export class MotorizedFormComponent implements OnInit {
   }
 
   onReset() {
-    this.motorized = new Motorized();    
+    this.customer = new Customer();    
     this.form.reset();
     this.submitted = false;
   }

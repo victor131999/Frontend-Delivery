@@ -10,6 +10,7 @@ import { retry, catchError, tap } from 'rxjs/operators';
 export class LocalService {
 
   url : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/locals";
+  urls : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/page/locals";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -49,7 +50,7 @@ export class LocalService {
   }
 
   list(page: number, limit : number): Observable<Local[]> {
-    return this.http.get<Local[]>(this.url + "/" + page + "/" + limit, this.httpOptions)
+    return this.http.get<Local[]>(this.urls + "/" + page + "/" + limit, this.httpOptions)
       .pipe(
         retry(1)
       );

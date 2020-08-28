@@ -10,6 +10,7 @@ import { retry, catchError, tap } from 'rxjs/operators';
 export class ProductService {
 
   url : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/products";
+  urls : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/page/products";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -49,7 +50,7 @@ export class ProductService {
   }
 
   list(page: number, limit : number): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url + "/" + page + "/" + limit, this.httpOptions)
+    return this.http.get<Product[]>(this.urls + "/" + page + "/" + limit, this.httpOptions)
       .pipe(
         retry(1)
       );

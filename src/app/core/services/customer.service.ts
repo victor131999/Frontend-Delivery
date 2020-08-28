@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../../shared/models/customer';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, of } from 'rxjs';
-import { retry } from 'rxjs/operators';
+import { retry, catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import { retry } from 'rxjs/operators';
 export class CustomerService {
 
   url : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/customers";
+  urls : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/page/customers";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -21,28 +22,35 @@ export class CustomerService {
   constructor(private http:HttpClient) { }
 
   save(customer : Customer): Observable<any>  {  
-    let bodyCustomer = JSON.stringify(customer);
-    if(customer.idcustomer === undefined)
-    {
-      return this.http.post(this.url, bodyCustomer, this.httpOptions);
+    let customerBody = JSON.stringify(customer);
+    if(customer.idcustomer === undefined){
+      return this.http.post<Customer>(this.url, customerBody, this.httpOptions);
     }
-       return this.http.patch(this.url + '/' + customer.idcustomer, bodyCustomer, this.httpOptions);
+    else{
+      return this.http.put<Customer>(this.url.concat('/').concat(customer.idcustomer), customerBody, this.httpOptions);
     }
+  }
   
-  retrievee(id: string): Observable<Customer>  {    
+  retrieve(id: string): Observable<Customer>  {    
     return this.http.get<Customer>(this.url.concat('/').concat(id), this.httpOptions)
     .pipe(
       retry(1)     
     );
   }
-  
+
   delete(id: string): Observable<any>  {    
-    return this.http.delete(this.url.concat('/').concat(id), this.httpOptions);
+    return this.http.delete<Customer>(this.url.concat('/').concat(id), this.httpOptions);
   }
 
-  
-  list(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.url, this.httpOptions)
+  count(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/count/customers', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
+
+  list(page: number, limit : number): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.urls + "/" + page + "/" + limit, this.httpOptions)
       .pipe(
         retry(1)
       );

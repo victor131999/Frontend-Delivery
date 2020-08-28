@@ -11,10 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //customers
-import { CustomerMainComponent } from './components/customer-main/customer-main.component';
-import { CustomerListComponent } from './components/customer-main/customer-list/customer-list.component';
-import { CustomerFormComponent } from './components/customer-main/customer-form/customer-form.component';
 import { CustomerService } from './core/services/customer.service';
+import { CustomerFormComponent } from './components/customer-form/customer-form.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { CustomerCardComponent } from './components/customer-card/customer-card.component';
 
 //locales
@@ -36,11 +35,10 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductCardComponent } from './components/product-card/product-card.component';
 
 //Ordenes
-import { OrderMainComponent } from './components/order-main/order-main.component';
-import { OrderListComponent } from './components/order-main/order-list/order-list.component';
-import { OrderFormComponent } from './components/order-main/order-form/order-form.component';
-import { OrderService } from './core/services/order.service';
-import { OrderCardComponent } from './components/order-card/order-card.component';
+import { ChargeService } from './core/services/charge.service';
+import { ChargeFormComponent } from './components/charge-form/charge-form.component';
+import { ChargeListComponent } from './components/charge-list/charge-list.component';
+import { ChargeCardComponent } from './components/charge-card/charge-card.component';
 
 import { ServiceInterceptor } from './core/interceptors/service.interceptor';
 import { MasmasPipe } from './shared/pipes/masmas.pipe';
@@ -56,7 +54,7 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerMainComponent,
+    
     CustomerListComponent,
     CustomerFormComponent,
     CustomerCardComponent,
@@ -74,10 +72,9 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
     MotorizedCardComponent,
  
 
-    OrderMainComponent,
-    OrderListComponent,
-    OrderFormComponent,
-    OrderCardComponent,
+    ChargeListComponent,
+    ChargeFormComponent,
+    ChargeCardComponent,
 
     MasmasPipe,
 
@@ -91,7 +88,7 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
     FontAwesomeModule,
     NgxPaginationModule 
   ],
-  providers: [CustomerService, LocalService,ProductService, MotorizedService, OrderService, {
+  providers: [CustomerService, LocalService,ProductService, MotorizedService, ChargeService, {
     provide: HTTP_INTERCEPTORS,
     useClass: ServiceInterceptor,
     multi: true

@@ -1,5 +1,5 @@
 export class Motorized {
     idmotorized:string;
-    name : string;
+    brand : string;
     vehicle : string;
 }

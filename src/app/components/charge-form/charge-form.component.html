@@ -17,22 +17,23 @@
     
                                             <form [formGroup]="form" (ngSubmit)="onSubmit()" method="post">
                                                 <div class="row d-flex align-items-center">
-                                                    <div class="col-1">											
-                                                        <fa-icon class="fa-2x" [icon]='faFont'></fa-icon>
-                                                    </div>
-                                                    <div class="col-5">													
-                                                        <input formControlName="brand" type="text" class="form-control" [(ngModel)]="motorized.brand" [ngClass]="{'is-invalid': submitted && f.brand.errors}" placeholder="Marca" />
-                                                        <div class="invalid-feedback" *ngIf=" submitted && f.brand.errors" class="invalid-feedback">
-                                                            <small *ngIf=" submitted && f.brand.errors.required">La marca es requerido</small>
-                                                        </div>													
-                                                    </div>																																		
+                                                    																																	
                                                     <div class="col-1">											
                                                         <fa-icon class="fa-2x" [icon]='faAlignCenter'></fa-icon>
                                                     </div>
                                                     <div class="col-5">													
-                                                        <input formControlName="vehicle" type="text" class="form-control" [(ngModel)]="motorized.vehicle" [ngClass]="{'is-invalid':  submitted && f.vehicle.errors}" placeholder="vehiculo" />
-                                                        <div class="invalid-feedback" *ngIf=" submitted && f.vehicle.errors" class="invalid-feedback">
-                                                            <small *ngIf=" submitted && f.vehicle.errors.required">El vehiculo es requerida</small>
+                                                        <input formControlName="state" type="text" class="form-control" [(ngModel)]="charge.state" [ngClass]="{'is-invalid':  submitted && f.state.errors}" placeholder="Marca" />
+                                                        <div class="invalid-feedback" *ngIf=" submitted && f.state.errors" class="invalid-feedback">
+                                                            <small *ngIf=" submitted && f.state.errors.required">La marca es requerida</small>
+                                                        </div>													
+                                                    </div>
+                                                    <div class="col-1">											
+                                                        <fa-icon class="fa-2x" [icon]='faAlignCenter'></fa-icon>
+                                                    </div>
+                                                    <div class="col-5">													
+                                                        <input formControlName="description" type="text" class="form-control" [(ngModel)]="charge.description" [ngClass]="{'is-invalid':  submitted && f.description.errors}" placeholder="Descripción" />
+                                                        <div class="invalid-feedback" *ngIf=" submitted && f.description.errors" class="invalid-feedback">
+                                                            <small *ngIf=" submitted && f.description.errors.required">La discripción es requerida</small>
                                                         </div>													
                                                     </div>
                                                 </div>

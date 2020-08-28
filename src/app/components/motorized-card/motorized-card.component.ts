@@ -39,7 +39,7 @@ export class MotorizedCardComponent implements OnInit {
               {
                 this.motorized = result;
                 this.motorized.idmotorized = params['id'];
-                this.title = this.motorized.name;                
+                this.title = this.motorized.brand;                
               }
             );
       }
