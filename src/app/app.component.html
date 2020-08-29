@@ -4,44 +4,48 @@
   <img
     width="40"
     alt="Logo"
-    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZQssUGQtyQ1IUaUXuiSH2Oid61lsSi68N7Q&usqp=CAU"
-  /> 
-    <ul class="nav">
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZQssUGQtyQ1IUaUXuiSH2Oid61lsSi68N7Q&usqp=CAU"/> 
+
+    
+    <ul class="nav"  >
       <li><a  routerLink="/">Inicio</a></li>
-      <li><a >Cliente</a>
+      <li ><a >Cliente</a>
         <ul>
-          <li><a [routerLink]="['/customer/list']" routerLinkActive="router-link-active">Registrar</a></li>
-          <li><a routerLink="/">Listar Clientes</a></li>
+          <li><a [routerLink]="['/customer/form']" routerLinkActive="router-link-active">Registrar</a></li>
+          <li ><a [routerLink]="['/customer/list']" routerLinkActive="router-link-active" >Listar clientes</a></li>
         </ul>
       </li>
       <li><a>Local</a>
         <ul>
-          <li><a  [routerLink]="['/local/list']" routerLinkActive="router-link-active" >Registro</a></li>
+          <li><a  [routerLink]="['/local/form']" routerLinkActive="router-link-active" >Registrar</a></li>
+          <li><a [routerLink]="['/local/list']" routerLinkActive="router-link-active" >Listar localess</a></li>
         </ul>
       </li>
       <li><a>Productos</a>
         <ul>
-          <li><a  [routerLink]="['/product/list']" routerLinkActive="router-link-active" >Registro</a></li>
+          <li><a  [routerLink]="['/product/form']" routerLinkActive="router-link-active" >Registrar</a></li>
+          <li><a [routerLink]="['/product/list']" routerLinkActive="router-link-active" >Listar productos</a></li>
         </ul>
       </li>
       <li><a>Vehiculos</a>
         <ul>
-          <li><a [routerLink]="['/motorized/list']" routerLinkActive="router-link-active" >Registro</a></li>
+          <li [routerLink]="['/motorized/form']" routerLinkActive="router-link-active" ><a >Registrar</a></li>
+          <li [routerLink]="['/motorized/list']" routerLinkActive="router-link-active"><a  >Listar motorizados</a></li>
         </ul>
       </li>
-      <li><a >Orden</a>
+      <li ><a >Orden</a>
         <ul>
-          <li><a [routerLink]="['/charge/list']" routerLinkActive="router-link-active" >Registro</a></li>
-          <li><a routerLink="/">Listar ordenes</a></li>
+          <li><a [routerLink]="['/charge/form']" routerLinkActive="router-link-active" >Registrar</a></li>
+          <li><a [routerLink]="['/charge/list']" routerLinkActive="router-link-active" >Listar ordenes</a></li>
         </ul>
       </li>
-
+      <li><a >Registrarse</a>
+        <ul>
+         <li><a [routerLink]="['/signup']" routerLinkActive="router-link-active">Registro</a></li> 
+        </ul>
+      </li>
+      
     </ul>
-    
-    <div class="login-content">
-      <a [routerLink]="['/signup']" routerLinkActive="router-link-active">Registro</a>
-  </div>
-
 </div>
 
 <div class="content" role="main">

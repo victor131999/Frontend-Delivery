@@ -80,7 +80,7 @@ export class MotorizedListComponent implements OnInit {
   delete(motorized: Motorized): void {
     swal.fire({
       title: '¿Está seguro?',
-      text: `El registro de ${motorized.brand} será eliminado permanentemente`,
+      text: `El registro de ${motorized.owner} será eliminado permanentemente`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

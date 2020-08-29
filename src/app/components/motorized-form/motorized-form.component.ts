@@ -53,8 +53,10 @@ export class MotorizedFormComponent implements OnInit {
     });
 
     this.form = this.formBuilder.group({
+      owner : ['', [Validators.required]],
       brand : ['', [Validators.required]],
-      vehicle : ['', [Validators.required]]
+      vehicle : ['', [Validators.required]],
+      disponibility : ['', [Validators.required]]
     });
   }
 

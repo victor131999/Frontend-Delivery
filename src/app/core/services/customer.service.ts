@@ -56,5 +56,12 @@ export class CustomerService {
       );
   }
 
+  ComboCustomer(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.url , this.httpOptions)
+      .pipe(
+        retry(1)
+      );
+  }
+
 }
 

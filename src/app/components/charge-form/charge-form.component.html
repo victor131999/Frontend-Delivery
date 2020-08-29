@@ -16,15 +16,30 @@
                                         <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">										
     
                                             <form [formGroup]="form" (ngSubmit)="onSubmit()" method="post">
+
+
                                                 <div class="row d-flex align-items-center">
-                                                    																																	
+                                                    <select formControlName="idcustomer" type="text" class="form-control" [(ngModel)]="charge.idcustomer" [ngClass]="{'is-invalid':  submitted && f.idcustomer.errors}" >
+                                                        <option [value]="item.idcustomer" *ngFor="let item of customers">{{item.name}}</option>
+                                                    </select>
+                                                </div>
+                                                <br>
+                                                <div class="row d-flex align-items-center">
+                                                    <select formControlName="idmotorized" type="text" class="form-control" [(ngModel)]="charge.idmotorized" [ngClass]="{'is-invalid':  submitted && f.idmotorized.errors}">
+                                                        <option [value]="item.idmotorized" *ngFor="let item of motorizeds">{{item.owner}} - {{item.vehicle}}</option>
+                                                    </select>
+                                                </div>
+                                                
+                                                <br>
+
+                                                <div class="row d-flex align-items-center"> 																																	
                                                     <div class="col-1">											
                                                         <fa-icon class="fa-2x" [icon]='faAlignCenter'></fa-icon>
                                                     </div>
                                                     <div class="col-5">													
-                                                        <input formControlName="state" type="text" class="form-control" [(ngModel)]="charge.state" [ngClass]="{'is-invalid':  submitted && f.state.errors}" placeholder="Marca" />
+                                                        <input formControlName="state" type="text" class="form-control" [(ngModel)]="charge.state" [ngClass]="{'is-invalid':  submitted && f.state.errors}" placeholder="Estado" />
                                                         <div class="invalid-feedback" *ngIf=" submitted && f.state.errors" class="invalid-feedback">
-                                                            <small *ngIf=" submitted && f.state.errors.required">La marca es requerida</small>
+                                                            <small *ngIf=" submitted && f.state.errors.required">El estado es requerida</small>
                                                         </div>													
                                                     </div>
                                                     <div class="col-1">											

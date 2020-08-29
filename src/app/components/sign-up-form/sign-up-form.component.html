@@ -1,5 +1,89 @@
-
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="user">
+<!--<div class="col-12">
+    <div class="breadcumb-area bg-img">
+      <div class="bradcumbContent">
+        <h2>Registro</h2>
+      </div>
+    </div>
+  
+    <div class="top-popular-courses-area mt-100 section-padding-100-70">
+      <section class="contact-area mt-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="contact-content">
+                <div class="row">
+                  <div class="col">
+                    <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">
+                      <form [formGroup]="form" (ngSubmit)="onSubmit()" method="post">
+                        <div class="row d-flex align-items-center">
+                          <div class="col-2">
+                            <fa-icon class="fa-2x" [icon]='faAt'></fa-icon>
+                          </div>  
+                          <div class="col">
+                            <small class="media-heading">Email</small>
+                            <input formControlName="email" type="text" class="form-control" [ngClass]="{'is-invalid': f.email.errors}" placeholder="Email" />
+                            <div class="invalid-feedback" *ngIf="f.email.errors" class="invalid-feedback">
+                              <small *ngIf="f.email.errors.required">El email es requerido</small><br>
+                              <small *ngIf="f.email.errors.email">El formato del email es incorrecto</small>
+                            </div>
+                          </div>                        
+                          <div class="col-2">
+                            <fa-icon class="fa-2x" [icon]='faKey'></fa-icon>
+                          </div>
+                          <label></label>
+                          <div class="col">
+                            <small class="media-heading">Contraseña</small>
+                            <input formControlName="password" type="password" class="form-control" [ngClass]="{'is-invalid': f.password.errors}" placeholder="Contraseña" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$" />
+                            <div class="invalid-feedback" *ngIf="f.password.errors" class="invalid-feedback">
+                              <small *ngIf=" f.password.errors.required">La contraseña es requerida</small>
+                              <small *ngIf=" f.password.errors.pattern">La contraseña debe tener mayúsculas, minúsculas, y al menos un número y caracter especial</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row d-flex align-items-center">
+                          <div class="col-2">
+                            <fa-icon class="fa-2x" [icon]='faUser'></fa-icon>
+                          </div>
+                          <label></label>
+                          <div class="col">
+                            <small class="media-heading">Nombre</small>
+                            <input formControlName="displayName" type="text" class="form-control" [ngClass]="{'is-invalid': f.displayName.errors}" placeholder="Nombre" />
+                            <div class="invalid-feedback" *ngIf="f.displayName.errors" class="invalid-feedback">
+                              <small *ngIf=" f.displayName.errors.required">El nombre es requerido</small><br>
+                              <small *ngIf=" f.displayName.errors.minLength">El nombre debe tener al menos 3 caracteres</small>
+                            </div>
+                          </div>                        
+                          <div class="col-2">
+                            <fa-icon class="fa-2x" [icon]='faUserAlt'></fa-icon>
+                          </div>
+                          <label></label>
+                          <div class="col">
+                            <small class="media-heading">Rol</small>
+                                <select formControlName="role" class="form-control" [ngClass]="{'is-invalid': f.role.errors}">
+                                    <option value="client">Cliente</option>
+                                    <option value="Dueño">Dueño del local</option>                                    
+                                </select>
+                            <div class="invalid-feedback" *ngIf="f.role.errors" class="invalid-feedback">
+                              <small *ngIf=" f.role.errors.required">El rol es requerido</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                          <button [disabled]="form.invalid" class="btn btn-sm academy-btn btn-3" type="submit"><fa-icon [icon]='faSave'></fa-icon>&nbsp;Guardar</button>
+                          <button (click)="onReset()"  class="btn btn-sm academy-btn btn-2 ml-2" type="button"><fa-icon [icon]='faTimes'></fa-icon>&nbsp;Cancelar</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>-->
+  <!--<form [formGroup]="form" (ngSubmit)="onSubmit()" class="user">
   <div class="row">
       <div class="col">
           <mat-form-field apparience="legacy" class="formWidth" >
@@ -42,5 +126,5 @@
   </div>
 </form>
 
-
+-->
 

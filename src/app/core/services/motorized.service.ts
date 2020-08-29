@@ -56,5 +56,12 @@ export class MotorizedService {
         retry(1)
       );
   }
+
+  ComboMotorized(): Observable<Motorized[]> {
+    return this.http.get<Motorized[]>(this.url , this.httpOptions)
+      .pipe(
+        retry(1)
+      );
+  }
 }
 
