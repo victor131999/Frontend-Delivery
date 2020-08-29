@@ -53,7 +53,7 @@ export class MotorizedListComponent implements OnInit {
     this.loadPage(this.currentPage);
   }
 
-  changeLimit($event){
+  motorizedLimit($event){
     this.limit = $event.target.value;
     this.calcNumberPages();
   }

@@ -7,20 +7,21 @@ import {Observable } from 'rxjs';
 })
 export class AuthService {
 
-  url : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/auth";
+  constructor(private http:HttpClient) { }
+
+  url : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/auth/signup";
 
   httpOptions={
     headers:new HttpHeaders({
       'Content-Type': 'application/json',
-      'Accept': 'application/json'      
+      Accept: 'application/json'      
     })
   };
 
-  constructor(private http:HttpClient) { }
 
-  signup(user : any): Observable<any>  {  
-    console.log(user);
-    return this.http.post(this.url.concat("/signup"), user, this.httpOptions);    
+  signup(user: any):Observable<any>{
+    let userBody = JSON.stringify(user);
+    return this.http.post(this.url, userBody, this.httpOptions)
   }
 
 }

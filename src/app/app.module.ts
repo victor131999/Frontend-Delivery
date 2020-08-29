@@ -48,7 +48,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 //Registro
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
-
+import { AuthService } from './core/services/auth.service';
 
 
 @NgModule({
@@ -88,7 +88,10 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
     FontAwesomeModule,
     NgxPaginationModule 
   ],
-  providers: [CustomerService, LocalService,ProductService, MotorizedService, ChargeService, {
+  providers: [AuthService,
+    CustomerService,
+    LocalService,ProductService,
+    MotorizedService, ChargeService, {
     provide: HTTP_INTERCEPTORS,
     useClass: ServiceInterceptor,
     multi: true

@@ -5,7 +5,7 @@
             <div class="row mb-3 ml-3">
                  <button class="btn btn-sm academy-btn btn-3" [routerLink]="['/motorized/form']"><fa-icon [icon]='faPlus'></fa-icon>&nbsp;Agregar</button>&nbsp;&nbsp;
                     Elementos por página:&nbsp;
-                          <select [value]="limit" (change)="changeLimit($event)">
+                          <select [value]="limit" (motorized)="motorizedLimit($event)">
                               <option>5</option>
                               <option>10</option>
                               <option>20</option>
