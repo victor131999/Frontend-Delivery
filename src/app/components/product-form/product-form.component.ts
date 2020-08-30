@@ -55,7 +55,9 @@ export class ProductFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       name : ['', [Validators.required]],
       brand : ['', [Validators.required]],
-      description : ['', [Validators.required]]
+      description : ['', [Validators.required]],
+      cost : ['', [Validators.required]],
+      typeiva : ['', [Validators.required]]
     });
   }
 
@@ -65,7 +67,8 @@ export class ProductFormComponent implements OnInit {
 
 
   onSubmit(): void {      
-
+    this.subtotal();
+    console.log(this.product.subtotal);
     this.submitted = true;    
     
     if (this.form.invalid) {
@@ -90,6 +93,14 @@ export class ProductFormComponent implements OnInit {
     this.product = new Product();    
     this.form.reset();
     this.submitted = false;
+  }
+
+  subtotal(){
+    if(this.product.typeiva=='Procesado'){
+      this.product.subtotal=this.product.cost*0.12+this.product.cost;
+    }else{
+      return this.product.subtotal=this.product.cost;
+    }
   }
 
 }

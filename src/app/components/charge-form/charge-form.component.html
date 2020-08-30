@@ -75,12 +75,12 @@
                 <td>No. </td>
                 <td>Nombre</td>
                 <td>Marca</td>
-                <td>Subtotal</td>
+                <td>Costo</td>
                 <td><button class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">
                     <fa-icon  [icon]='faPlus'></fa-icon>
                 </button></td>         
             </thead>
-            <tr *ngFor="let item of charge.products; let i = index">
+            <tr *ngFor="let item of charge.details; let i = index">
                 <td>{{ i+1 }} </td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.brand }}</td>
@@ -90,4 +90,13 @@
             </tr>
         </table>
 
+
+        <!--MODAL-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                   <app-detail-product (loadproducts)="addProduct($event)"></app-detail-product>
+                </div>
+            </div>
+        <!--MODAL-->
     </div>

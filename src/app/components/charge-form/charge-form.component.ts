@@ -8,6 +8,7 @@ import { Customer } from 'src/app/shared/models/customer';
 import { Motorized } from 'src/app/shared/models/motorized';
 import { MotorizedService } from 'src/app/core/services/motorized.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
+import { Detail } from 'src/app/shared/models/detail';
 
 
 
@@ -135,7 +136,23 @@ export class ChargeFormComponent implements OnInit {
         });
     }
 //------------------------------------------------------
+addProduct($event){
+ let detail=new Detail();
+ detail.name=$event.name;
+ detail.brand=$event.brand;
+ detail.subtotal=$event.subtotal;
+  this.charge.details.push(detail);
+  this.Total();
+}
+//-------------------------------------------------------------
 
 //-------------------------------------------------------------
+Total(){
+  let sum:number=0;
+  this.charge.details.forEach(item=>  sum+=Number(item.subtotal))
+  this.charge.total=sum;
+  console.log(this.charge.total)
+}
+
 
 }

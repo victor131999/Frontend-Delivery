@@ -17,7 +17,10 @@
                         <td>N°</td>
                         <td>Nombre</td>
                         <td>Marca</td>
-                        <td>Descripción</td>                                               
+                        <td>Descripción</td>    
+                        <td>Costo Sin iva</td>
+                        <td>Tipo de iva</td>  
+                        <td>Costo total</td>                                          
                         <td>Página {{currentPage}} de {{numberPages}}</td>
                       </tr>
                 </thead>
@@ -26,7 +29,10 @@
                         <td>{{i | masmas:(currentPage - 1) * limit + 1}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.brand }}</td> 
-                        <td>{{item.description }}</td>                                                                                       
+                        <td>{{item.description }}</td>
+                        <td>{{item.cost }}</td> 
+                        <td>{{item.typeiva }}</td>     
+                        <td>{{item.subtotal }}</td>                                                                                     
                         <td class="btn-group">    
                             <button class="btn btn-sm academy-btn btn-3" [routerLink]="['/product/card', item.idproduct]"><fa-icon [icon]='faEye'></fa-icon></button>                        
                             <button class="btn btn-sm academy-btn btn-2" [routerLink]="['/product/form', item.idproduct]"><fa-icon [icon]='faPencilAlt'></fa-icon></button>                        

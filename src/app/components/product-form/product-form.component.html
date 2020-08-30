@@ -44,6 +44,31 @@
                                                             <small *ngIf=" submitted && f.description.errors.required">La discripción es requerida</small>
                                                         </div>													
                                                     </div>
+
+                                                    <div class="col-1">											
+                                                        <fa-icon class="fa-2x" [icon]='faAlignCenter'></fa-icon>
+                                                    </div>
+                                                    <div class="col-5">													
+                                                        <input formControlName="cost" type="number" class="form-control" [(ngModel)]="product.cost" [ngClass]="{'is-invalid':  submitted && f.cost.errors}" placeholder="Costo por unidad" />
+                                                        <div class="invalid-feedback" *ngIf=" submitted && f.cost.errors" class="invalid-feedback">
+                                                            <small *ngIf=" submitted && f.cost.errors.required">El costo es requerido</small>
+                                                        </div>													
+                                                    </div>
+
+                                                    <div class="col-1">											
+                                                        <h5>Iva:</h5>
+                                                    </div>
+                                                    <div class="col-5">	
+                                                        <select formControlName="typeiva" type="text" class="form-control" [(ngModel)]="product.typeiva" [ngClass]="{'is-invalid':  submitted && f.typeiva.errors}" >
+                                                            <option value="Procesado" >Procesado</option>
+                                                            <option value="Natural">Natural</option>                
+                                                        </select>
+                                                        <div class="invalid-feedback" *ngIf=" submitted && f.typeiva.errors" class="invalid-feedback">
+                                                            <small *ngIf=" submitted && f.typeiva.errors.required">La disponibilidad es requerida</small>
+                                                        </div>
+                                                        </div>
+
+
                                                 </div>
                                                 <div class="d-flex justify-content-end">																																
                                                     <button class="btn btn-sm academy-btn btn-3" type="submit"><fa-icon [icon]='faSave'></fa-icon>&nbsp;Guardar</button>
