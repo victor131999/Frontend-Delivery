@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Charge } from '../../shared/models/charge';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, of } from 'rxjs';
-import { retry, catchError, tap } from 'rxjs/operators';
+import { retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

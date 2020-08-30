@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../../shared/models/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, of } from 'rxjs';
-import { retry, catchError, tap } from 'rxjs/operators';
+import { retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +55,7 @@ export class ProductService {
         retry(1)
       );
   }
+
 
 }
 

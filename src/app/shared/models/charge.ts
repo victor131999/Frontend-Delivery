@@ -12,5 +12,5 @@ export class Charge {
     idmotorized: string;
     customer?: Customer;
     motorized?: Motorized;
-    details:Array<Detail>
+    products:Array<Detail>=[];
 }

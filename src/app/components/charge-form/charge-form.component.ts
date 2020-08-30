@@ -10,6 +10,8 @@ import { MotorizedService } from 'src/app/core/services/motorized.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
 
 
+
+
 @Component({
   selector: 'app-charge-form',
   templateUrl: './charge-form.component.html',
@@ -36,6 +38,7 @@ export class ChargeFormComponent implements OnInit {
   customers:Customer[];
   motorizeds:Motorized[];
 
+  flagToQuery:Boolean = false;
   constructor(private ChargeService: ChargeService, 
     private formBuilder: FormBuilder, 
     private activatedRoute : ActivatedRoute,
@@ -53,6 +56,12 @@ export class ChargeFormComponent implements OnInit {
               {
                 this.charge = result;
                 this.charge.idcharge = params['id'];
+
+
+//-----------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+
                 this.title = "Actualizando " + this.charge.date;                
               }
             );
@@ -124,5 +133,8 @@ export class ChargeFormComponent implements OnInit {
           this.motorizeds=result
         });
     }
+//------------------------------------------------------
+
+//-------------------------------------------------------------
 
 }

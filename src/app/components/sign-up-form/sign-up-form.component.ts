@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { faAt,faKey,faUser,faUserAlt,faSave,faTimes} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -10,9 +11,17 @@ import { Router } from '@angular/router';
 })
 export class SignUpFormComponent implements OnInit {
 
+  
   constructor(private formBuilder: FormBuilder, private authService:AuthService, private router:Router) { }
   submitted = false;
   form : FormGroup
+  faAt=faAt;
+ faKey=faKey;
+ faUser=faUser;
+ faUserAlt=faUserAlt;
+ faSave=faSave;
+ faTimes=faTimes;
+
   ngOnInit(): void {
     //formBuilder
 

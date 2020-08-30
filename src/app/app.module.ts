@@ -51,6 +51,8 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
 import { AuthService } from './core/services/auth.service';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
