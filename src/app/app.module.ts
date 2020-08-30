@@ -50,8 +50,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
 import { AuthService } from './core/services/auth.service';
 
-
-
+import { ChartsModule } from 'ng2-charts';
+import { GraficaComponent } from './components/grafica/grafica.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,11 @@ import { AuthService } from './core/services/auth.service';
 
     MasmasPipe,
 
-    SignUpFormComponent
+    SignUpFormComponent,
+
+    GraficaComponent,
+
+    DetailProductComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +93,8 @@ import { AuthService } from './core/services/auth.service';
     ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    NgxPaginationModule 
+    NgxPaginationModule,
+    ChartsModule
   ],
   providers: [AuthService,
     CustomerService,

@@ -56,6 +56,13 @@ export class ProductService {
       );
   }
 
+  loadProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>("https://proyecto-delivery-typesc-9f79b.web.app/api/load/products", this.httpOptions)
+      .pipe(
+        retry(1)
+      );
+  }
+
 
 }
 

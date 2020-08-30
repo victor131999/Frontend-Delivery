@@ -22,6 +22,7 @@ import { MotorizedFormComponent } from './components/motorized-form/motorized-fo
 import { MotorizedCardComponent } from './components/motorized-card/motorized-card.component';
 
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
+import { GraficaComponent } from './components/grafica/grafica.component';
 
 
 const routes: Routes=[
@@ -51,7 +52,8 @@ const routes: Routes=[
   {path: 'customer/form/:id', component: CustomerFormComponent},
   {path: 'customer/card/:id', component: CustomerCardComponent},
 
-  {path: 'signup', component: SignUpFormComponent}
+  {path: 'signup', component: SignUpFormComponent},
+  {path: 'grafica', component: GraficaComponent}
 ];
 
 @NgModule({
