@@ -17,13 +17,14 @@
     
                                             <form [formGroup]="form" (ngSubmit)="onSubmit()" method="post">
 
-
+                                                <h5>Seleccionar el cliente</h5>
                                                 <div class="row d-flex align-items-center">
                                                     <select formControlName="idcustomer" type="text" class="form-control" [(ngModel)]="charge.idcustomer" [ngClass]="{'is-invalid':  submitted && f.idcustomer.errors}" >
                                                         <option [value]="item.idcustomer" *ngFor="let item of customers">{{item.name}}</option>
                                                     </select>
                                                 </div>
                                                 <br>
+                                                <h5>Seleccionar el motorizado</h5>
                                                 <div class="row d-flex align-items-center">
                                                     <select formControlName="idmotorized" type="text" class="form-control" [(ngModel)]="charge.idmotorized" [ngClass]="{'is-invalid':  submitted && f.idmotorized.errors}">
                                                         <option [value]="item.idmotorized" *ngFor="let item of motorizeds">{{item.owner}} - {{item.vehicle}}</option>
@@ -68,7 +69,7 @@
             </section>
         </div>
 
-
+        <h5>Apregar productos</h5>
         <table  class="table">
             <thead>
                 <td>No. </td>
@@ -76,7 +77,7 @@
                 <td>Marca</td>
                 <td>Subtotal</td>
                 <td><button class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">
-                    <fa-icon class="fa-2x" [icon]='faAlignCenter'></fa-icon>
+                    <fa-icon  [icon]='faPlus'></fa-icon>
                 </button></td>         
             </thead>
             <tr *ngFor="let item of charge.products; let i = index">

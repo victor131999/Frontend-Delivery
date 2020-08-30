@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faLowVision,faMortarPestle,faHourglass,faBars,faWindowMaximize,faAlignCenter,faFont, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlus,faLowVision,faMortarPestle,faHourglass,faBars,faWindowMaximize,faAlignCenter,faFont, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ChargeService } from 'src/app/core/services/charge.service';
 import { Charge } from 'src/app/shared/models/charge';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,6 +28,7 @@ export class ChargeFormComponent implements OnInit {
   faBars=faBars;
   faWindowMaximize=faWindowMaximize;
   faAlignCenter=faAlignCenter;
+  faPlus=faPlus;
 
   charge : Charge;
   title : string;
