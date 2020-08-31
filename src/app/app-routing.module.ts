@@ -22,8 +22,9 @@ import { MotorizedFormComponent } from './components/motorized-form/motorized-fo
 import { MotorizedCardComponent } from './components/motorized-card/motorized-card.component';
 
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
-import { GraficaComponent } from './components/grafica/grafica.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
+import { GraficaComponent } from './components/grafica/grafica.component';
 
 const routes: Routes=[
   {path: '', redirectTo: '/',pathMatch: 'full'},
@@ -53,6 +54,8 @@ const routes: Routes=[
   {path: 'customer/card/:id', component: CustomerCardComponent},
 
   {path: 'signup', component: SignUpFormComponent},
+  {path: 'login', component: LoginFormComponent},
+  
   {path: 'grafica', component: GraficaComponent}
 ];
 

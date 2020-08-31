@@ -35,6 +35,12 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+   /* if (localStorage.getItem('user')===null){
+      this.router.navigate(['/login']);
+      return;
+    }*/
+
+
     this.activatedRoute.params.subscribe( params =>{
       if(params['id']){
         this.ProductService.retrieve(params['id'])

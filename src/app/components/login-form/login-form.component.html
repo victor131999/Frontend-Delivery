@@ -1,0 +1,50 @@
+<div class="col-12">
+    <div class="breadcumb-area bg-img">
+      <div class="bradcumbContent">
+        <h2>Ingreso</h2>
+      </div>
+    </div>
+  
+    <div class="top-popular-courses-area mt-100 section-padding-100-70">
+      <section class="contact-area mt-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="contact-content">
+                <div class="row">
+                  <div class="col">
+                    <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">
+                      
+                        <div class="row d-flex align-items-center">
+                          <div class="col-2">
+                            <fa-icon class="fa-2x" [icon]='faAt'></fa-icon>
+                          </div>  
+                          <div class="col">
+                            <small class="media-heading">Email</small>
+                            <input #email type="text" class="form-control" placeholder="Email" />                            
+                          </div>                        
+                          <div class="col-2">
+                            <fa-icon class="fa-2x" [icon]='faKey'></fa-icon>
+                          </div>
+                          <label></label>
+                          <div class="col">
+                            <small class="media-heading">Contraseña</small>
+                            <input #password type="password" class="form-control" placeholder="Contraseña" />                            
+                          </div>
+                        </div>                        
+                        <div class="d-flex justify-content-end">
+                          <button (click)="login(email.value, password.value)" class="btn btn-sm academy-btn btn-3" type="button"><fa-icon [icon]='faKey'></fa-icon>&nbsp;Ingresar</button>
+                          <button (click)="onCancel()"  class="btn btn-sm academy-btn btn-2 ml-2" type="button"><fa-icon [icon]='faTimes'></fa-icon>&nbsp;Cancelar</button>
+                        </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  

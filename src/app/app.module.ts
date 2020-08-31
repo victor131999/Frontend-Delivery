@@ -51,8 +51,14 @@ import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.comp
 import { AuthService } from './core/services/auth.service';
 
 import { ChartsModule } from 'ng2-charts';
+
 import { GraficaComponent } from './components/grafica/grafica.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
+
+//Seguridad
+import {AngularFireModule} from '@angular/fire';
+import { LoginFormComponent } from './components/login-form/login-form.component' 
+import { firebaseCredentials } from './shared/models/auth';
 
 @NgModule({
   declarations: [
@@ -85,17 +91,20 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
 
     GraficaComponent,
 
-    DetailProductComponent
+    DetailProductComponent,
+
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(firebaseCredentials),
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
     NgxPaginationModule,
     ChartsModule
-  ],
+    ],
   providers: [AuthService,
     CustomerService,
     LocalService,ProductService,
