@@ -12,6 +12,7 @@ export class ChargeService {
   url : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/charges";
   urls : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/page/charges";
 
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -57,4 +58,6 @@ export class ChargeService {
         retry(1)
       );
   }
+
+
 }

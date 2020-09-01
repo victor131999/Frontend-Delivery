@@ -58,12 +58,6 @@ export class ChargeFormComponent implements OnInit {
               {
                 this.charge = result;
                 this.charge.idcharge = params['id'];
-
-
-//-----------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------
-
                 this.title = "Actualizando " + this.charge.date;                
               }
             );
