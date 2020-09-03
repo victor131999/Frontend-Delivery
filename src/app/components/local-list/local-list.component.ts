@@ -3,6 +3,7 @@ import { Local } from 'src/app/shared/models/local';
 import { LocalService } from 'src/app/core/services/local.service';
 import { faEye, faPlus, faPencilAlt,faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert2'
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-local-list',
@@ -22,9 +23,10 @@ export class LocalListComponent implements OnInit {
   currentPage : number = 1;
   pages : Array<number> = [];
   @Output() reloadComplete = new EventEmitter<Boolean>();
-  constructor(private LocalService: LocalService) { }
+  constructor(private LocalService: LocalService,private authService : AuthService) { }
 
   ngOnInit(): void {
+    this.authService.getToken();
     this.count();
   }
 
@@ -60,7 +62,7 @@ export class LocalListComponent implements OnInit {
 
   loadPage(pg : number){    
     this.currentPage = pg;    
-    this.LocalService.list(pg, this.limit).subscribe(
+    this.LocalService.list(pg, this.limit, this.authService.tokenUser).subscribe(
       result => {
         console.log(result);
         this.locals = result      
@@ -69,7 +71,7 @@ export class LocalListComponent implements OnInit {
   }
 
   list(): void {
-    this.LocalService.list(1,100).subscribe(
+    this.LocalService.list(1,100, this.authService.tokenUser).subscribe(
       result => {        
         this.locals = result;   
         this.reloadComplete.emit(true);     

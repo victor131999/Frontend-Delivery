@@ -97,7 +97,7 @@ import { firebaseCredentials } from './shared/models/auth';
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(firebaseCredentials),
+    AngularFireModule.initializeApp(firebaseCredentials()),
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

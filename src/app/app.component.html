@@ -1,4 +1,5 @@
 
+
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <img
@@ -51,12 +52,35 @@
       </li>
       
     </ul>
+    
 </div>
+
+
 
 <div class="content" role="main">
 
   <!-- Highlight Card -->
-
+  <div class="top-header">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-12 h-100">
+                <div class="header-content h-100 d-flex align-items-center justify-content-between">
+                    <div class="login-content">
+                        <a [routerLink]="['/signup']" routerLinkActive="router-link-active">Registro</a>
+                    </div>
+                    <h4>|</h4>
+                    <div class="login-content">
+                      <a [routerLink]="['/login']" routerLinkActive="router-link-active">Ingresar</a>
+                    </div>
+                    <h4>|</h4>
+                    <div class="login-content">
+                      <a href="#" (click)="logout()" routerLinkActive="router-link-active">Salir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
   <!-- Container -->
   <div class="container container-fluid my-3">

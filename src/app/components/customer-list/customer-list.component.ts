@@ -3,6 +3,7 @@ import { Customer } from 'src/app/shared/models/customer';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { faEye, faPlus, faPencilAlt,faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert2'
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -22,9 +23,12 @@ export class CustomerListComponent implements OnInit {
   currentPage : number = 1;
   pages : Array<number> = [];
   @Output() reloadComplete = new EventEmitter<Boolean>();
-  constructor(private CustomerService: CustomerService) { }
+
+  constructor(private CustomerService: CustomerService,
+              private authService : AuthService) { }
 
   ngOnInit(): void {
+    this.authService.getToken();
     this.count();
   }
 
@@ -60,7 +64,7 @@ export class CustomerListComponent implements OnInit {
 
   loadPage(pg : number){    
     this.currentPage = pg;    
-    this.CustomerService.list(pg, this.limit).subscribe(
+    this.CustomerService.list(pg, this.limit, this.authService.tokenUser).subscribe(
       result => {
         console.log(result);
         this.customers = result      
@@ -69,7 +73,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   list(): void {
-    this.CustomerService.list(1,100).subscribe(
+    this.CustomerService.list(1,100, this.authService.tokenUser).subscribe(
       result => {        
         this.customers = result;   
         this.reloadComplete.emit(true);     
@@ -89,7 +93,7 @@ export class CustomerListComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((option) => {
       if (option.value) {
-        this.CustomerService.delete(customer.idcustomer).subscribe(
+        this.CustomerService.delete(customer.idcustomer, this.authService.tokenUser).subscribe(
           result => {                        
             this.list();
           }

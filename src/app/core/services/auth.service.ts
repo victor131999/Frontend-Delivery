@@ -10,7 +10,7 @@ export class AuthService {
 
   url : string = "https://proyecto-delivery-typesc-9f79b.web.app/api/auth";
   isLoggedIn = false; //Bandera para determinar si el usuario está logeado o no
-
+  tokenUser : string;
   httpOptions={
     headers:new HttpHeaders({
       'Content-Type': 'application/json',
@@ -28,11 +28,18 @@ export class AuthService {
   async singin(email: string, password :string){
     await this.firebaseAuth.signInWithEmailAndPassword(email, password).then(res=> {
       console.log(res);
+      res.user.getIdToken().then(result => this.tokenUser = result);
       this.isLoggedIn = true;
       localStorage.setItem('user', JSON.stringify(res.user));
     });
   }
 
+  getToken() {
+    this.firebaseAuth.user.subscribe(result => 
+      result.getIdToken().then(token => this.tokenUser = "Bearer " + token)
+    );
+  }
+  
   logout(){
     this.firebaseAuth.signOut();
     localStorage.removeItem('user');

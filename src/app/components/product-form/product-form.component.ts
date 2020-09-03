@@ -4,6 +4,7 @@ import { faLowVision,faMortarPestle,faHourglass,faBars,faWindowMaximize,faAlignC
 import { ProductService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/shared/models/product';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-product-form',
@@ -31,15 +32,11 @@ export class ProductFormComponent implements OnInit {
   constructor(private ProductService: ProductService, 
     private formBuilder: FormBuilder, 
     private activatedRoute : ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private authService : AuthService) { }
 
   ngOnInit(): void {
-
-   /* if (localStorage.getItem('user')===null){
-      this.router.navigate(['/login']);
-      return;
-    }*/
-
+    this.authService.getToken();
 
     this.activatedRoute.params.subscribe( params =>{
       if(params['id']){
@@ -81,7 +78,7 @@ export class ProductFormComponent implements OnInit {
         return;
     }
     
-    this.ProductService.save(this.product).subscribe(
+    this.ProductService.save(this.product, this.authService.tokenUser).subscribe(
         (result) => {                  
           this.submitted = false;
           if(result !== undefined)

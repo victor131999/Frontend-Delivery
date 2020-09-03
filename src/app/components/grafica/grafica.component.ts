@@ -11,6 +11,28 @@ import { ChargeService } from 'src/app/core/services/charge.service';
 })
 
 export class GraficaComponent implements OnInit {
+
+  public numberDocs : number;
+
+
+  
+  constructor(private chargeService: ChargeService) { }
+ 
+
+  ngOnInit() {
+    this.count()
+    console.log(this.numberDocs)
+    
+  }
+
+  public count(){
+    this.chargeService.countChargesCustomer().subscribe(
+      result => {        
+        console.log(result);
+        this.numberDocs = result.numberDocs;                           
+      }
+    );
+  }
   public barChartOptions: ChartOptions = {
     responsive: true,
     scales: { xAxes: [{}], yAxes: [{}] },
@@ -26,19 +48,12 @@ export class GraficaComponent implements OnInit {
   public barChartLegend = true;
 
   public barChartData: ChartDataSets[] = [
-
-    { data: [67, 59, 80, 81, 56, 55, 40], label: 'Producto A' },
+    
+    { data: [this.numberDocs, 59, 80, 81, 56, 55, 40], label: 'Producto A' },
     { data: [28, 48, 40, 19, 86, 27, 90], label: 'Producto B' }
   ];
-
   
-  constructor() { }
   
-  ngOnInit() {
-
-  }
-
-
  /* public randomize(): void {
     // Only Change 3 values
     const data = [

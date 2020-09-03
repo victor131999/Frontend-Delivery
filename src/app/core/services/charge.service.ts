@@ -52,12 +52,28 @@ export class ChargeService {
   }
 
   
-  list(page: number, limit : number): Observable<Charge[]> {
-    return this.http.get<Charge[]>(this.urls + "/" + page + "/" + limit, this.httpOptions)
+  list(page: number, limit : number, token: string): Observable<Charge[]> {
+
+    const httpHeaders ={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Accept': 'application/json',
+        'Authorization' : token
+      })
+    };
+
+
+    return this.http.get<Charge[]>(this.urls + "/" + page + "/" + limit, httpHeaders)
       .pipe(
         retry(1)
       );
   }
 
+  countChargesCustomer(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/customer/VR2xKR9m4hMHoXD7jD7d', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
 
 }

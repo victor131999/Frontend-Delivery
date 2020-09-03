@@ -21,10 +21,12 @@ export class MotorizedService {
 
   constructor(private http:HttpClient) { }
 
-  save(motorized : Motorized): Observable<any>  {  
+  save(motorized : Motorized,): Observable<any>  {  
+
+
     let motorizedBody = JSON.stringify(motorized);
     if(motorized.idmotorized === undefined){
-      return this.http.post<Motorized>(this.url, motorizedBody, this.httpOptions);
+      return this.http.post<Motorized>(this.url, motorizedBody,this.httpOptions);
     }
     else{
       return this.http.put<Motorized>(this.url.concat('/').concat(motorized.idmotorized), motorizedBody, this.httpOptions);
@@ -50,8 +52,17 @@ export class MotorizedService {
   }
 
   
-  list(page: number, limit : number): Observable<Motorized[]> {
-    return this.http.get<Motorized[]>(this.urls + "/" + page + "/" + limit, this.httpOptions)
+  list(page: number, limit : number, token: string): Observable<Motorized[]> {
+
+    const httpHeaders ={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Accept': 'application/json',
+        'Authorization' : token
+      })
+    };
+
+    return this.http.get<Motorized[]>(this.urls + "/" + page + "/" + limit, httpHeaders)
       .pipe(
         retry(1)
       );

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../shared/models/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable, of } from 'rxjs';
+import {Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
 
 @Injectable({
@@ -21,10 +21,20 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
-  save(product : Product): Observable<any>  {  
+  save(product : Product, token: string): Observable<any>  {  
+
+    const httpHeaders ={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Accept': 'application/json',
+        'Authorization' : token
+      })
+    };
+
+
     let productBody = JSON.stringify(product);
     if(product.idproduct === undefined){
-      return this.http.post<Product>(this.url, productBody, this.httpOptions);
+      return this.http.post<Product>(this.url, productBody, httpHeaders);
     }
     else{
       return this.http.put<Product>(this.url.concat('/').concat(product.idproduct), productBody, this.httpOptions);
@@ -49,8 +59,18 @@ export class ProductService {
     );
   }
 
-  list(page: number, limit : number): Observable<Product[]> {
-    return this.http.get<Product[]>(this.urls + "/" + page + "/" + limit, this.httpOptions)
+  list(page: number, limit : number, token: string): Observable<Product[]> {
+
+    const httpHeaders ={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Accept': 'application/json',
+        'Authorization' : token
+      })
+    };
+
+
+    return this.http.get<Product[]>(this.urls + "/" + page + "/" + limit, httpHeaders)
       .pipe(
         retry(1)
       );
@@ -62,6 +82,7 @@ export class ProductService {
         retry(1)
       );
   }
+
 
 
 }

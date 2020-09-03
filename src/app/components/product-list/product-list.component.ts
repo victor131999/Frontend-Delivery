@@ -3,6 +3,8 @@ import { Product } from 'src/app/shared/models/product';
 import { ProductService } from 'src/app/core/services/product.service';
 import { faEye, faPlus, faPencilAlt,faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert2'
+import { AuthService } from 'src/app/core/services/auth.service';
+
 
 @Component({
   selector: 'app-product-list',
@@ -22,9 +24,11 @@ export class ProductListComponent implements OnInit {
   currentPage : number = 1;
   pages : Array<number> = [];
   @Output() reloadComplete = new EventEmitter<Boolean>();
-  constructor(private ProductService: ProductService) { }
+  constructor(private ProductService: ProductService,
+    private authService : AuthService) { }
 
   ngOnInit(): void {
+    this.authService.getToken();
     this.count();
   }
 
@@ -60,7 +64,7 @@ export class ProductListComponent implements OnInit {
 
   loadPage(pg : number){    
     this.currentPage = pg;    
-    this.ProductService.list(pg, this.limit).subscribe(
+    this.ProductService.list(pg, this.limit, this.authService.tokenUser).subscribe(
       result => {
         console.log(result);
         this.products = result      
@@ -69,7 +73,7 @@ export class ProductListComponent implements OnInit {
   }
 
   list(): void {
-    this.ProductService.list(1,100).subscribe(
+    this.ProductService.list(1,100, this.authService.tokenUser).subscribe(
       result => {        
         this.products = result;   
         this.reloadComplete.emit(true);     

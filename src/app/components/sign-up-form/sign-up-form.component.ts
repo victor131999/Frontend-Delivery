@@ -31,7 +31,7 @@ export class SignUpFormComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       displayName: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$")]],
-      role: ['user', [Validators.required]]
+      role: ['customer', [Validators.required]]
     });    
   }
 

@@ -1,13 +1,17 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { faTimes , faAt, faUser, faKey} from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
+ 
   faTimes = faTimes;
   faAt = faAt;
   faUser = faUser;
@@ -19,14 +23,20 @@ export class LoginFormComponent implements OnInit {
   }
 
   async login(email:string, password:string){
-    await this.authService.singin(email, password);
-    if(this.authService.isLoggedIn){
-      console.log("User login");
-    }
-}
+      await this.authService.singin(email, password);
+      if(this.authService.isLoggedIn){
+        console.log("User login");
+        Swal.fire({
+          title : "Bienvenid@",
+          text : "Ingreso satisfactorio",
+          icon : "success"
+        });
+        this.router.navigate(['/']);
+      }
+  }
 
-onCancel() : void {
-  this.router.navigate(['/']);
-}
+  onCancel() : void {
+    this.router.navigate(['/']);
+  }
 
 }

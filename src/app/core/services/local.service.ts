@@ -21,10 +21,19 @@ export class LocalService {
 
   constructor(private http:HttpClient) { }
 
-  save(local : Local): Observable<any>  {  
+  save(local : Local, token: string): Observable<any>  {  
+
+    const httpHeaders ={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Accept': 'application/json',
+        'Authorization' : token
+      })
+    };
+
     let localBody = JSON.stringify(local);
     if(local.idlocal === undefined){
-      return this.http.post<Local>(this.url, localBody, this.httpOptions);
+      return this.http.post<Local>(this.url, localBody, httpHeaders);
     }
     else{
       return this.http.put<Local>(this.url.concat('/').concat(local.idlocal), localBody, this.httpOptions);
@@ -49,8 +58,18 @@ export class LocalService {
     );
   }
 
-  list(page: number, limit : number): Observable<Local[]> {
-    return this.http.get<Local[]>(this.urls + "/" + page + "/" + limit, this.httpOptions)
+  list(page: number, limit : number, token: string): Observable<Local[]> {
+
+    const httpHeaders ={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Accept': 'application/json',
+        'Authorization' : token
+      })
+    };
+
+
+    return this.http.get<Local[]>(this.urls + "/" + page + "/" + limit, httpHeaders)
       .pipe(
         retry(1)
       );

@@ -47,11 +47,14 @@
                                                     <div class="col-1">											
                                                         <fa-icon class="fa-2x" [icon]='faAlignCenter'></fa-icon>
                                                     </div>
-                                                    <div class="col-5">													
-                                                        <input formControlName="active" type="text" class="form-control" [(ngModel)]="customer.active" [ngClass]="{'is-invalid':  submitted && f.active.errors}" placeholder="Actividad" />
+                                                    <div class="col-5">	
+                                                        <select formControlName="active" type="text" class="form-control" [(ngModel)]="customer.active" [ngClass]="{'is-invalid':  submitted && f.active.errors}" placeholder="Actividad" >
+                                                            <option value="Activo" >Activo</option>
+                                                            <option value="No activo">No activo</option>                
+                                                        </select>
                                                         <div class="invalid-feedback" *ngIf=" submitted && f.active.errors" class="invalid-feedback">
                                                             <small *ngIf=" submitted && f.active.errors.required">La actividad es requerida</small>
-                                                        </div>													
+                                                        </div>	
                                                     </div>
                                                     <div class="col-1">											
                                                         <fa-icon class="fa-2x" [icon]='faAlignCenter'></fa-icon>

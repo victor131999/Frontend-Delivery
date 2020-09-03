@@ -4,6 +4,7 @@ import { faLowVision,faMortarPestle,faHourglass,faBars,faWindowMaximize,faAlignC
 import { LocalService } from 'src/app/core/services/local.service';
 import { Local } from 'src/app/shared/models/local';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-local-form',
@@ -31,10 +32,11 @@ export class LocalFormComponent implements OnInit {
   constructor(private LocalService: LocalService, 
     private formBuilder: FormBuilder, 
     private activatedRoute : ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private authService : AuthService) { }
 
   ngOnInit(): void {
-
+    this.authService.getToken();
     this.activatedRoute.params.subscribe( params =>{
       if(params['id']){
         this.LocalService.retrieve(params['id'])
@@ -71,7 +73,7 @@ export class LocalFormComponent implements OnInit {
         return;
     }
     
-    this.LocalService.save(this.local).subscribe(
+    this.LocalService.save(this.local, this.authService.tokenUser).subscribe(
         (result) => {                  
           this.submitted = false;
           if(result !== undefined)

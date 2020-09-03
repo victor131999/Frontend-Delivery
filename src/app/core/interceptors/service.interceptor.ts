@@ -1,4 +1,5 @@
-  import { Injectable } from '@angular/core';
+
+import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -28,7 +29,23 @@ export class ServiceInterceptor implements HttpInterceptor {
       err => {
         console.error(err);
         if(err.status === 400){
-          Swal.fire(err);
+          Swal.fire(err.error);
+        }
+        
+        if(err.status === 401){
+          Swal.fire({
+            title : "No autorizado",
+            text : err.error.message,
+            icon : "error"
+          });
+        }
+
+        if(err.status === 403){
+          Swal.fire({
+            title : "No autorizado",
+            text : err.error.message,
+            icon : "warning"
+          });
         }
       }
     );

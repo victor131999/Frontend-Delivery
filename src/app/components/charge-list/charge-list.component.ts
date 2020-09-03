@@ -3,6 +3,7 @@ import { Charge } from 'src/app/shared/models/charge';
 import { ChargeService } from 'src/app/core/services/charge.service';
 import { faEye, faPlus, faPencilAlt,faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert2'
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-charge-list',
@@ -22,9 +23,10 @@ export class ChargeListComponent implements OnInit {
   currentPage : number = 1;
   pages : Array<number> = [];
   @Output() reloadComplete = new EventEmitter<Boolean>();
-  constructor(private ChargeService: ChargeService) { }
+  constructor(private ChargeService: ChargeService,private authService : AuthService) { }
 
   ngOnInit(): void {
+    this.authService.getToken();
     this.count();
   }
 
@@ -60,7 +62,7 @@ export class ChargeListComponent implements OnInit {
 
   loadPage(pg : number){    
     this.currentPage = pg;    
-    this.ChargeService.list(pg, this.limit).subscribe(
+    this.ChargeService.list(pg, this.limit, this.authService.tokenUser).subscribe(
       result => {
         console.log(result);
         this.charges = result      
@@ -69,7 +71,7 @@ export class ChargeListComponent implements OnInit {
   }
 
   list(): void {
-    this.ChargeService.list(1,100).subscribe(
+    this.ChargeService.list(1,100, this.authService.tokenUser).subscribe(
       result => {        
         this.charges = result;   
         this.reloadComplete.emit(true);     

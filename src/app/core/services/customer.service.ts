@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../../shared/models/customer';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable, of } from 'rxjs';
-import { retry, catchError, tap } from 'rxjs/operators';
+import {Observable } from 'rxjs';
+import { retry} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class CustomerService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Accept: 'application/json'      
+      'Accept': 'application/json'      
     })
   };
 
@@ -38,8 +38,17 @@ export class CustomerService {
     );
   }
 
-  delete(id: string): Observable<any>  {    
-    return this.http.delete<Customer>(this.url.concat('/').concat(id), this.httpOptions);
+  delete(id: string, token: string): Observable<any>  {  
+
+    const httpHeaders ={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Accept': 'application/json',
+        'Authorization' : token
+      })
+    };
+
+    return this.http.delete<Customer>(this.url.concat('/').concat(id), httpHeaders);
   }
 
   count(): Observable<any>  {    
@@ -49,8 +58,17 @@ export class CustomerService {
     );
   }
 
-  list(page: number, limit : number): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.urls + "/" + page + "/" + limit, this.httpOptions)
+  list(page: number, limit : number, token: string): Observable<Customer[]> {
+
+    const httpHeaders ={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Accept': 'application/json',
+        'Authorization' : token
+      })
+    };
+
+    return this.http.get<Customer[]>(this.urls + "/" + page + "/" + limit, httpHeaders)
       .pipe(
         retry(1)
       );

@@ -3,6 +3,7 @@ import { Motorized } from 'src/app/shared/models/motorized';
 import { MotorizedService } from 'src/app/core/services/motorized.service';
 import { faEye, faPlus, faPencilAlt,faTrash } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert2'
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-motorized-list',
@@ -22,9 +23,10 @@ export class MotorizedListComponent implements OnInit {
   currentPage : number = 1;
   pages : Array<number> = [];
   @Output() reloadComplete = new EventEmitter<Boolean>();
-  constructor(private MotorizedService: MotorizedService) { }
+  constructor(private MotorizedService: MotorizedService,private authService : AuthService) { }
 
   ngOnInit(): void {
+    this.authService.getToken();
     this.count();
   }
 
@@ -60,7 +62,7 @@ export class MotorizedListComponent implements OnInit {
 
   loadPage(pg : number){    
     this.currentPage = pg;    
-    this.MotorizedService.list(pg, this.limit).subscribe(
+    this.MotorizedService.list(pg, this.limit, this.authService.tokenUser).subscribe(
       result => {
         console.log(result);
         this.motorizeds = result      
@@ -69,7 +71,7 @@ export class MotorizedListComponent implements OnInit {
   }
 
   list(): void {
-    this.MotorizedService.list(1,100).subscribe(
+    this.MotorizedService.list(1,100, this.authService.tokenUser).subscribe(
       result => {        
         this.motorizeds = result;   
         this.reloadComplete.emit(true);     
