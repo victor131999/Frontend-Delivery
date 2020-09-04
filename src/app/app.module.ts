@@ -52,7 +52,8 @@ import { AuthService } from './core/services/auth.service';
 
 import { ChartsModule } from 'ng2-charts';
 
-import { GraficaComponent } from './components/grafica/grafica.component';
+import { GraficaBarrasComponent } from './components/grafica_barras/grafica_barras.component';
+import { GraficaPastelComponent } from './components/grafica_pastel/grafica_pastel.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 //Seguridad
@@ -89,7 +90,8 @@ import { firebaseCredentials } from './shared/models/auth';
 
     SignUpFormComponent,
 
-    GraficaComponent,
+    GraficaBarrasComponent,
+    GraficaPastelComponent,
 
     DetailProductComponent,
 

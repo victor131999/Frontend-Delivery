@@ -69,11 +69,38 @@ export class ChargeService {
       );
   }
 
-  countChargesCustomer(): Observable<any>  {    
-    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/customer/VR2xKR9m4hMHoXD7jD7d', this.httpOptions)
+  countChargesCustomer1(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/customer1/VR2xKR9m4hMHoXD7jD7d', this.httpOptions)
     .pipe(
       retry(1)     
     );
   }
 
+  countChargesCustomer2(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/customer2/2O1xXVNZ6nnZy4N0pfXY', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
+
+  countChargesCustomer3(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/customer3/5fEo3I5iWIpPEKmyc1F8', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
+
+  countChargesCustomer4(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/customer4/IH3x9Sj3KYsddPgytQmE', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
+
+  countChargesCustomer5(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/customer5/Oi5HuCyWxFwm17XOSice', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { ProductService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/shared/models/product';
-import { faEye} from '@fortawesome/free-solid-svg-icons';
+import { faCheck} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { faEye} from '@fortawesome/free-solid-svg-icons';
 })
 export class DetailProductComponent implements OnInit {
   
-  faEye=faEye;
+  faCheck=faCheck;
   products:Product[];
   @Output() loadproducts=new EventEmitter<Product>(); 
 

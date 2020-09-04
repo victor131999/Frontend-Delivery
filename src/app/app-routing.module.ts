@@ -24,7 +24,8 @@ import { MotorizedCardComponent } from './components/motorized-card/motorized-ca
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 
-import { GraficaComponent } from './components/grafica/grafica.component';
+import { GraficaBarrasComponent } from './components/grafica_barras/grafica_barras.component';
+import { GraficaPastelComponent } from './components/grafica_pastel/grafica_pastel.component';
 
 const routes: Routes=[
   {path: '', redirectTo: '/',pathMatch: 'full'},
@@ -56,7 +57,8 @@ const routes: Routes=[
   {path: 'signup', component: SignUpFormComponent},
   {path: 'login', component: LoginFormComponent},
   
-  {path: 'grafica', component: GraficaComponent}
+  {path: 'grafica/barras', component: GraficaBarrasComponent},
+  {path: 'grafica/pastel', component: GraficaPastelComponent}
 ];
 
 @NgModule({
