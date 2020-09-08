@@ -74,5 +74,41 @@ export class MotorizedService {
         retry(1)
       );
   }
+
+  //-------------------------------------------------------------------------------
+  Ordersplaced1(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/motorized/ordersplaced1/RYV3tgRdbmyVJ5NBKNLC', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
+
+  Ordersplaced2(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/motorized/ordersplaced2/iEklTXNFn5MYyjo4LHO6', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
+
+  Ordersplaced3(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/motorized/ordersplaced3/mfFrjevpPJJBgufwVxib', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
+
+  Ordersplaced4(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/motorized/ordersplaced4/qBjXtHT65pbfIVKnVc7Z', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
+
+  Ordersplaced5(): Observable<any>  {    
+    return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/motorized/ordersplaced5/rx8XDq9DDmU2Ok0sLy1g', this.httpOptions)
+    .pipe(
+      retry(1)     
+    );
+  }
 }
 

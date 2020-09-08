@@ -101,6 +101,7 @@ export class ChargeFormComponent implements OnInit {
                 }
               })
               motoriz.disponibility="Ocupado"
+              motoriz.Ordersplaced=motoriz.Ordersplaced+1;
               this.MotorizedService.save(motoriz).subscribe(result=>console.log(result))
               this.router.navigate(['charge/list']);
               return;

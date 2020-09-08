@@ -48,7 +48,7 @@ export class CustomerFormComponent implements OnInit {
       }
       else {
         this.customer = new Customer();
-        this.title = "Nuevo registro de customero"
+        this.title = "Nuevo registro de cliente"
       }
     });
 

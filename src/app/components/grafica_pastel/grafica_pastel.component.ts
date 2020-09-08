@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
-import { ChargeService } from 'src/app/core/services/charge.service';
+import { MotorizedService } from 'src/app/core/services/motorized.service';
 @Component({
   selector: 'app-grafica_pastel',
   templateUrl: './grafica_pastel.component.html',
@@ -20,11 +20,42 @@ export class GraficaPastelComponent implements OnInit {
    pieChartLegend = true;
    pieChartColors;
 
-  constructor(private chargeService: ChargeService) { }
+  constructor(private MotorizedService: MotorizedService) { }
 
   ngOnInit() {
-    this.graficaPastel(this.numberDocs1,this.numberDocs2,this.numberDocs3,this.numberDocs4,this.numberDocs5);
     this.count();
+    this.graficaPastel(this.numberDocs1,this.numberDocs2,this.numberDocs3,this.numberDocs4,this.numberDocs5);
+
+  }
+
+  count(){
+    this.MotorizedService.Ordersplaced1().subscribe(
+      result => {    
+        this.numberDocs1 = result.numberDocs1;  
+        this.MotorizedService.Ordersplaced2().subscribe(
+          result => {    
+            this.numberDocs2 = result.numberDocs2; 
+            this.MotorizedService.Ordersplaced3().subscribe(
+              result => {    
+                this.numberDocs3 = result.numberDocs3; 
+                this.MotorizedService.Ordersplaced4().subscribe(
+                  result => {    
+                    this.numberDocs4 = result.numberDocs4;  
+                    this.MotorizedService.Ordersplaced5().subscribe(
+                      result => {    
+                        this.numberDocs5 = result.numberDocs5;  
+                        console.log(this.numberDocs1,this.numberDocs2,this.numberDocs3,this.numberDocs4,this.numberDocs5)
+                        this.graficaPastel(this.numberDocs1,this.numberDocs2,this.numberDocs3,this.numberDocs4,this.numberDocs5)                     
+                      }
+                    );                   
+                  }
+                );                 
+              }
+            );                    
+          }
+        );                   
+      }
+    );
   }
 
   // events
@@ -52,7 +83,7 @@ export class GraficaPastelComponent implements OnInit {
       },
     }
   };
-  this.pieChartLabels = [['Johana'], ['Carmen'], ['Josee'], ['Victor'], 'Hugo'];
+  this.pieChartLabels = [['Andy'], ['Manuel'], ['Pamela'], ['Jose'], 'Pepe'];
   this.pieChartData = [numberDocs1,numberDocs2, numberDocs3, numberDocs4, numberDocs5];
   this.pieChartType= 'pie';
   this.pieChartLegend;
@@ -63,34 +94,6 @@ export class GraficaPastelComponent implements OnInit {
   ];
   }
 
-  count(){
-    this.chargeService.countChargesCustomer1().subscribe(
-      result => {    
-        this.numberDocs1 = result.numberDocs1;  
-        this.chargeService.countChargesCustomer2().subscribe(
-          result => {    
-            this.numberDocs2 = result.numberDocs2; 
-            this.chargeService.countChargesCustomer3().subscribe(
-              result => {    
-                this.numberDocs3 = result.numberDocs3;  
-                this.chargeService.countChargesCustomer4().subscribe(
-                  result => {    
-                    this.numberDocs4 = result.numberDocs4;  
-                    this.chargeService.countChargesCustomer5().subscribe(
-                      result => {    
-                        this.numberDocs5 = result.numberDocs5;  
-                        console.log(this.numberDocs1,this.numberDocs2,this.numberDocs3,this.numberDocs4,this.numberDocs5)
-                        this.graficaPastel(this.numberDocs1,this.numberDocs2,this.numberDocs3,this.numberDocs4,this.numberDocs5)                     
-                      }
-                    );                   
-                  }
-                );                 
-              }
-            );                    
-          }
-        );                   
-      }
-    );
-  }
+
 
 }
