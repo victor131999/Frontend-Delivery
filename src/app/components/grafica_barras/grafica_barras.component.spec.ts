@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GraficaComponent } from './grafica.component';
+import { GraficaBarrasComponent } from './grafica_barras.component';
 
-describe('GraficaComponent', () => {
-  let component: GraficaComponent;
-  let fixture: ComponentFixture<GraficaComponent>;
+describe('GraficaBarrasComponent', () => {
+  let component: GraficaBarrasComponent;
+  let fixture: ComponentFixture<GraficaBarrasComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GraficaComponent ]
+      declarations: [ GraficaBarrasComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GraficaComponent);
+    fixture = TestBed.createComponent(GraficaBarrasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
