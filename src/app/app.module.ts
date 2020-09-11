@@ -53,6 +53,7 @@ import { AuthService } from './core/services/auth.service';
 import { ChartsModule } from 'ng2-charts';
 
 import { GraficaBarrasComponent } from './components/grafica_barras/grafica_barras.component';
+import { GraficaBarrasLocalComponent } from './components/grafica_barras_local/grafica_barras_local.component';
 import { GraficaPastelComponent } from './components/grafica_pastel/grafica_pastel.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
@@ -92,6 +93,7 @@ import { firebaseCredentials } from './shared/models/auth';
 
     GraficaBarrasComponent,
     GraficaPastelComponent,
+    GraficaBarrasLocalComponent,
 
     DetailProductComponent,
 

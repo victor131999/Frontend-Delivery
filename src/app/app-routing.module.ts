@@ -26,6 +26,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 
 import { GraficaBarrasComponent } from './components/grafica_barras/grafica_barras.component';
 import { GraficaPastelComponent } from './components/grafica_pastel/grafica_pastel.component';
+import { GraficaBarrasLocalComponent } from './components/grafica_barras_local/grafica_barras_local.component';
 
 const routes: Routes=[
   {path: '', redirectTo: '/',pathMatch: 'full'},
@@ -58,7 +59,9 @@ const routes: Routes=[
   {path: 'login', component: LoginFormComponent},
   
   {path: 'grafica/barras', component: GraficaBarrasComponent},
-  {path: 'grafica/pastel', component: GraficaPastelComponent}
+  {path: 'grafica/pastel', component: GraficaPastelComponent},
+  {path: 'grafica/barras/local', component: GraficaBarrasLocalComponent}
+
 ];
 
 @NgModule({
