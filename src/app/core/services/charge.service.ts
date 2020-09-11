@@ -69,6 +69,7 @@ export class ChargeService {
       );
   }
 
+//-----------------------Gráfica clientes potenciales-------
   countChargesCustomer1(): Observable<any>  {    
     return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/customer1/VR2xKR9m4hMHoXD7jD7d', this.httpOptions)
     .pipe(
@@ -103,4 +104,32 @@ export class ChargeService {
       retry(1)     
     );
   }
+
+  //--------------------Gráfica ordenes vs locales-----------------
+OrdersLocal1(): Observable<any>  {    
+  return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/local1/55KdSo0oAA7jD4bBJFsi', this.httpOptions)
+  .pipe(
+    retry(1)     
+  );
+}
+
+OrdersLocal2(): Observable<any>  {    
+  return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/local2/G03uMAqd6wvZe40Ba1Bg', this.httpOptions)
+  .pipe(
+    retry(1)     
+  );
+}
+OrdersLocal3(): Observable<any>  {    
+  return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/local3/PAKW7tfFbqnRXb7PrqTB', this.httpOptions)
+  .pipe(
+    retry(1)     
+  );
+}
+OrdersLocal4(): Observable<any>  {    
+  return this.http.get<any>('https://proyecto-delivery-typesc-9f79b.web.app/api/charges/count/local4/V6QpTYBWjBW12TrKlGnj', this.httpOptions)
+  .pipe(
+    retry(1)     
+  );
+}
+
 }

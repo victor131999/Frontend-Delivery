@@ -75,5 +75,12 @@ export class LocalService {
       );
   }
 
+  ComboLocal(): Observable<Local[]> {
+    return this.http.get<Local[]>(this.url , this.httpOptions)
+      .pipe(
+        retry(1)
+      );
+  }
+
 }
 

@@ -30,6 +30,12 @@
                                                         <option [value]="item.idmotorized" *ngFor="let item of motorizeds">{{item.owner}} - {{item.vehicle}}</option>
                                                     </select>
                                                 </div>
+                                                <h5>Seleccionar el local</h5>
+                                                <div class="row d-flex align-items-center">
+                                                    <select formControlName="idlocal" type="text" class="form-control" [(ngModel)]="charge.idlocal" [ngClass]="{'is-invalid':  submitted && f.idlocal.errors}">
+                                                        <option [value]="item.idlocal" *ngFor="let item of locals">{{item.name}}</option>
+                                                    </select>
+                                                </div>
                                                 
                                                 <br>
 

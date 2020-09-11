@@ -6,8 +6,10 @@ import { Charge } from 'src/app/shared/models/charge';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/shared/models/customer';
 import { Motorized } from 'src/app/shared/models/motorized';
+import { Local } from 'src/app/shared/models/local';
 import { MotorizedService } from 'src/app/core/services/motorized.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
+import { LocalService } from 'src/app/core/services/local.service';
 import { Detail } from 'src/app/shared/models/detail';
 
 
@@ -39,6 +41,7 @@ export class ChargeFormComponent implements OnInit {
 
   customers:Customer[];
   motorizeds:Motorized[];
+  locals:Local[];
 
   flagToQuery:Boolean = false;
   constructor(private ChargeService: ChargeService, 
@@ -46,11 +49,13 @@ export class ChargeFormComponent implements OnInit {
     private activatedRoute : ActivatedRoute,
     private router: Router,
     private CustomerService:CustomerService,
-    private MotorizedService:MotorizedService) { }
+    private MotorizedService:MotorizedService,
+    private LocalService:LocalService) { }
 
   ngOnInit(): void {
     this.ComboMotorized();
     this.ComboCustomer();
+    this.ComboLocal();
     this.activatedRoute.params.subscribe( params =>{
       if(params['id']){
         this.ChargeService.retrieve(params['id'])
@@ -71,6 +76,7 @@ export class ChargeFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       idcustomer : ['', [Validators.required]],
       idmotorized : ['', [Validators.required]],
+      idlocal : ['', [Validators.required]],
       state : ['', [Validators.required]],
       description : ['', [Validators.required]]
     });
@@ -128,6 +134,13 @@ export class ChargeFormComponent implements OnInit {
       this.MotorizedService.ComboMotorized().subscribe(
         result=>{
           this.motorizeds=result
+        });
+    }
+
+    ComboLocal(){
+      this.LocalService.ComboLocal().subscribe(
+        result=>{
+          this.locals=result
         });
     }
 //------------------------------------------------------
